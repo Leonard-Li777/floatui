@@ -1,0 +1,76 @@
+{
+  "commonRoot": [
+    {
+      "root":"ang",
+      "definition": "倾斜、弯曲",
+      "source": "来自拉丁语 angulus（角）"
+    }
+  ],
+  "words": [
+    {
+      "word": "angel",
+      "root": [
+        {
+          "root": "el",
+          "definition": "神的使者",
+          "source": "源自希腊语 angelos（信使、使者）"
+        }
+      ],
+      "parse": "‘Angel’ 结合了‘ang’的倾斜、上升之意象，与‘el’的神使者概念，形象地描绘出天界信使从天而降，传达神圣信息的画面。",
+      "prompt": "In a celestial realm of soft golden light, an ethereal figure with feathered wings descends gently, their gaze filled with divine compassion. The aura around them seems to bend the very fabric of space, symbolizing their role as intermediaries between heaven and earth. (wings: 1.5), (aura: 1.3)",
+      "promptChinese": "在一片柔和金光的天界中，一位长着羽毛翅膀的超凡人物轻柔降落，眼神满含神的慈悲。他们周身散发的光环似乎弯曲了空间本身，象征着作为天地间使者的角色。",
+      "sentencePure": "天使带着慈爱的目光降临人间，传递希望与和平的信息。",
+      "sentence": "天使（angel）带着慈爱的目光降临人间，传递希望与和平的信息。"
+    },
+    {
+      "word": "angle",
+      "root": [],
+      "parse": "直接采用‘ang’词根的意义，指物体之间形成的尖锐转折或空间的部分，形象地想象为两条线在空间中的倾斜交汇，形成角。",
+      "prompt": "At the convergence of two shimmering, silver lines in a geometrically precise universe, a point emerges, marking the birth of an angle. This visual intersection symbolizes the fundamental unit of measurement and direction, echoing through Euclidean space. (lines: 1.2), (point: 1.4)",
+      "promptChinese": "在两条闪耀银光、几何精确的线条交汇处，一点显现，标志着角度的诞生。这一视觉上的交叉点象征着测量与方向的基本单位，回响于欧几里得空间之中。",
+      "sentencePure": "两条光线在平静的湖面上形成一个完美的角度。",
+      "sentence": "两条光线在平静的湖面上形成一个完美的角度（angle）。"
+    },
+    {
+      "word": "sang",
+      "root": [
+        {
+          "root": "can",
+          "definition": "唱歌的能力",
+          "source": "源自拉丁语 canere（歌唱）"
+        }
+      ],
+      "parse": "虽然‘sang’的形态上未直接体现‘ang’的含义，但它源于‘canere’，意指‘歌唱’。记忆时可联想到歌手在舞台中央，声音如旋律般弯曲流转，吸引着每一个‘角度’的听众。",
+      "prompt": "Under the glow of stage lights, a silhouette stands at center stage, their voice weaving melodies that seem to physically contour the air, reaching every corner of the venue with an enchanting performance. The audience, each from their own angle, is captivated. (melodies: 1.3), (audience: 1.2)",
+      "promptChinese": "舞台灯光下，一道身影矗立中央，其歌声仿佛在空气中织就旋律，弯曲流动，以迷人的表演触及每个角落的听众。观众们，无论从哪个角度，都被深深吸引。",
+      "sentencePure": "歌手在舞台上倾情演唱，歌声绕梁，打动了每一位听众的心。",
+      "sentence": "歌手在舞台上倾情演唱（sang），歌声绕梁，打动了每一位听众的心。"
+    }
+  ],
+  "keys": [
+    "angel",
+    "angle",
+    "sang"
+  ],
+  "details": [
+    "[ˈeɪndʒəl] n. 天使；守护神；adj. 天使的；神圣的；",
+    "[ˈæŋɡl] n. 角度；观点；v. 转动；倾斜；",
+    "[sæŋ] v. （sing 的过去式）唱歌；发声；鸣叫"
+  ],
+  "en": "An angel in the clouds played the harp, forming a perfect angle with her wings, while her beautiful singing seemingly pierced through the gates of heaven.",
+  "zh": "一位 (天使 angel) 在云端弹奏竖琴，她的翅膀构成了一个完美的 (角度 angle)，她那美妙的 (歌声 sang) 仿佛穿透了天堂之门。",
+  "zhPure": "一位天使在云端弹奏竖琴，她的翅膀构成了一个完美的角度，她那美妙的歌声仿佛穿透了天堂之门。",
+  "mix": "An angel in the clouds played the harp,\n一位 (天使 angel) 在云端弹奏竖琴，\nforming a perfect angle with her wings,\n翅膀构成完美 (角度 angle)\nwhile her beautiful singing seemingly pierced\n美妙的 (歌声 sang) 仿佛\nthrough the gates of heaven.\n穿透了天堂之门",
+  "prompt": "神圣",
+  "word": [
+    "angel 天使",
+    "angle 角度",
+    "sang 唱歌（过去式）"
+  ],
+  "tense": [
+    "angel",
+    "angle",
+    "sang",
+    "singing"
+  ]
+}

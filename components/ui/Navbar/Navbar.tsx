@@ -45,7 +45,7 @@ export default () => {
 
   return (
     <>
-      <header className="h-[4rem] relative z-20">
+      <header className="h-[4rem] relative z-20  pt-10">
         <nav
           className={` ${
             state
@@ -58,22 +58,6 @@ export default () => {
               <Link href="/">
                 <Brand />
               </Link>
-              <div className="flex md:hidden">
-                <div className="mr-3">
-                  <EditorWithAiButton />
-                </div>
-                <button
-                  aria-label="menu button"
-                  className="menu-btn group"
-                  onClick={() => setState(!state)}
-                >
-                  {state ? (
-                    <XMarkIcon className="w-5 h-5 pointer-events-none text-zinc-500 group-hover:text-zinc-400" />
-                  ) : (
-                    <Bars3Icon className="w-5 h-5 pointer-events-none text-zinc-500 group-hover:text-zinc-400" />
-                  )}
-                </button>
-              </div>
             </div>
             <div
               className={`flex-1 items-center mt-8 md:mt-0 md:flex ${

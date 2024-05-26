@@ -10,6 +10,10 @@ module.exports = {
     "./componentsDB/**/*.md",
   ],
   theme: {
+    fontFamily: {
+      title: ['DOUYU'],
+      body: ['Microsoft YaHei UI'],
+    },
     extend: {},
   },
   plugins: [

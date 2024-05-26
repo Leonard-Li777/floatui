@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logoDark from "public/logo-dark.svg";
+import logoDark from "public/images/title.svg";
 
 export default () => (
   <>

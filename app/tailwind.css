@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: '抖音美好体', 'Proxima Nova', system-ui, sans-serif;
+  }
+}
 @layer components {
   .bg-shiny {
     @apply border border-zinc-800;
@@ -16,7 +21,24 @@
   .heading {
     @apply font-extrabold text-transparent bg-clip-text bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)];
   }
+
+  .text-linear {
+    @apply font-extrabold text-transparent bg-clip-text bg-[linear-gradient(180deg,_#FFF_30%,_rgba(100,100,100,_1)_100.00%)];
+  }
 }
+
+.h-100vw {
+  height: 100vw
+}
+
+.text-shaodw {
+  text-shadow: #27272a 0px 2px 4px;
+}
+
+.heading-linear {
+  @apply text-transparent bg-clip-text bg-[linear-gradient(180deg,_#FFF_30%,_rgba(255,255,255,_1)_100.00%)];
+}
+
 
 .custom-screen {
   @apply max-w-screen-xl mx-auto px-4 md:px-8;
@@ -28,7 +50,7 @@
 }
 
 .ar-font {
-  font-family: "Tajawal", sans-serif;
+  font-family: 'Tajawal', sans-serif;
 }
 
 .btns-container {

@@ -57,10 +57,8 @@ export default function RootLayout({
         <meta name="robots" content="index, follow" />
       </head>
       <UsermavenSetup />
-      <body className={inter.className}>
-        <Navbar />
+      <body>
         <main>{children}</main>
-        <Footer />
       </body>
     </html>
   );
