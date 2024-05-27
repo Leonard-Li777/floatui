@@ -300,16 +300,16 @@ export default async (props) => {
                   共同词根
                 </Link>
               </div>
-              <div className="pt-10 max-w-3xl space-y-4 text-center flex-col justify-center ">
+              <div className="max-w-3xl space-y-4 text-center flex-col justify-center ">
                 {commonRoot?.map(({ root, definition, source }, index) => {
                   return (
-                    <span  key={index}>
+                    <div key={index} className="pt-10">
                       <h1 className="flex-shrink-0 w-full text-4xl text-linear sm:text-6xl">
                         <span className="text-blue-500">{root}</span>{" "}
                         <span className="text-3xl">{definition}</span>
                       </h1>
-                      <div className=" pt-10 text-zinc-400">词根： {source}</div>
-                    </span>
+                      <div className="pt-5 text-zinc-400">词根： {source}</div>
+                    </div>
                   );
                 })}
               </div></>
