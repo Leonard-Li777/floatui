@@ -189,12 +189,12 @@ export default async (props) => {
 
   try {
     return (
-      <>
+      <div className="m-5">
         <BgGradient />
         {section === "1" &&
           (() => {
             return (
-              <section id="section1" className="w-screen h-screen">
+              <section id="section1" className="h-screen">
                 <Navbar />
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div
@@ -241,7 +241,7 @@ export default async (props) => {
               <section id="section2" className="max-w-screen mt-4">
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div
-                  className="relative h-100vw bg-no-repeat bg-cover"
+                  className="mt-10 relative h-100vw bg-no-repeat bg-cover"
                   style={{
                     backgroundImage: `linear-gradient(to right, rgba(0,0,0, 0.0) 0 100%),url('data:image/jpeg;base64,${imageToBase64(
                       `${projectDir}/image/127.0.0.1_8088_${order+1}.png`
@@ -351,7 +351,7 @@ export default async (props) => {
                         </span>
                       );
                     })}
-                    <div className="text-2xl mt-5 text-center text-gray-100/30 leading-loose font-body tracking-wide md:text-4xl">
+                    <div className="text-2xl m-10 text-center text-gray-100/30 leading-loose font-body tracking-wide md:text-4xl">
                       {parse}
                     </div>
                   </div>
@@ -363,7 +363,7 @@ export default async (props) => {
           ((order = 0) => {
             const { sentence } = words[order];
             return (
-              <section id="section6" className="mt-5 w-screen h-screen">
+              <section id="section6" className="mt-5">
                 <Navbar />
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div
@@ -387,7 +387,7 @@ export default async (props) => {
         {section === "7" &&
           ((order = 0) => {
             return (
-              <section id="section7" className="max-w-screen mt-4">
+              <section id="section7" className="max-w-screen mt-10">
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div
                   className="relative h-100vw bg-no-repeat bg-cover"
@@ -479,7 +479,7 @@ export default async (props) => {
               </section>
             );
           })(order)}
-      </>
+      </div>
     );
   } catch (err) {
     return <></>;
