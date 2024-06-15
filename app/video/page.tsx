@@ -25,9 +25,9 @@ function imageToBase64(imagePath) {
 }
 const fontColor = [
   "text-teal-300",
+  "text-yellow-300",
   "text-pink-300",
   "text-green-300",
-  "text-yellow-300",
   "text-red-300",
 ];
 
@@ -115,6 +115,8 @@ function HtmlText({
       /\(([^\)]*)\)/g,
       ` <b class='${"underline-offset-8 underline decoration-blue-500"}' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> `
     );
+
+
   } else {
     html = text.replace(
       /\(([^\)]*)\)/g,
@@ -126,8 +128,8 @@ function HtmlText({
     );
   }
 
-  if (tense?.length) {
-    tense.forEach((item) => {
+  if (!mask && tense?.length) {
+    tense.sort((a,b)=>-(a.length - b.length)).forEach((item) => {
       html = html.replace(`${item}`, `<b class='text-blue-500'>${item}</b>`);
     });
   }
@@ -201,7 +203,7 @@ export default async (props) => {
                   className="mt-10 relative bg-no-repeat bg-cover"
                   style={{
                     backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.6) 20%, rgba(0,0,0,0.0) 70%),url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/127.0.0.1_8088_1.png`
+                      `${projectDir}/image/1.png`
                     )}')`,
                   }}
                 >
@@ -244,7 +246,7 @@ export default async (props) => {
                   className="mt-10 relative h-100vw bg-no-repeat bg-cover"
                   style={{
                     backgroundImage: `linear-gradient(to right, rgba(0,0,0, 0.0) 0 100%),url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/127.0.0.1_8088_${order+1}.png`
+                      `${projectDir}/image/${order+1}.png`
                     )}')`,
                   }}
                 ></div>
@@ -370,7 +372,7 @@ export default async (props) => {
                   className="m-4 mt-10 pt-10 relative bg-no-repeat bg-cover"
                   style={{
                     backgroundImage: `url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/127.0.0.1_8088_word${order+1}.png`
+                      `${projectDir}/image/word${order+1}.png`
                     )}')`,
                   }}
                 >
@@ -393,7 +395,7 @@ export default async (props) => {
                   className="relative h-100vw bg-no-repeat bg-cover"
                   style={{
                     backgroundImage: `linear-gradient(to right, rgba(0,0,0, 0.0) 0 100%),url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/127.0.0.1_8088_${order+1}.png`
+                      `${projectDir}/image/${order+1}.png`
                     )}')`,
                   }}
                 ></div>
