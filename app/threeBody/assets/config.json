@@ -1,0 +1,155 @@
+{
+  "english": "But the commander was afraid of the dozen or so iron stoves inside the building, filled with explosives and connected to each other by electric detonators. He couldn’t see them, but he could feel their presence like iron sensing the pull of a nearby magnet. If a defender flipped the switch, revolutionaries and counter-revolutionaries alike would all die in one giant ball of fire.",
+  "translation": "但是指挥官害怕的是楼里那十几个铁炉子，里面装满炸药，用电雷管互相连接着。他看不见它们，但却能感觉到它们的存在，就像铁能感觉到附近磁铁的吸引。只要守军一按开关，革命者和反革命者都将一同化为一团巨大的火球。",
+  "dirName": "But_the_commander_was_afraid_of_the_dozen_or_so_iron_stoves_",
+  "chinese": "“红色联合”的指挥官心急如焚，他并不惧怕大楼的守卫者，那二百多名“四·二八”战士，与诞生于l966年初、经历过大检阅和大串联的“红色联合”相比要稚嫩许多。他怕的是大楼中那十几个大铁炉子，里面塞满了烈性炸药，用电雷管串联起来，他看不到它们，但能感觉到它们磁石般的存在，开关一合，玉石俱焚，而“四·二八”的那些小红卫兵们是有这个精神力量的。",
+  "difference": "英文版简洁明快，直接表达了对铁炉子中炸药的恐惧，中文版则通过增加背景信息，如“红色联合”与“四·二八”战士的对比，丰富了情节的深度，使得情感更加饱满。",
+  "differenceStoryboard": {
+    "scene1": {
+      "keywords": "(commander's anxiety: 1.5), (electric detonators: 1.3), (hidden explosives: 1.4)",
+      "prompt": "In the dimly lit command room, sweat beads roll down the commander's forehead, casting flickering shadows under the intermittent candlelight. His gaze pierces through the blueprint, visualizing those unseen iron stoves as if they were magnetic anomalies pulling at his every nerve.",
+      "translation": "在昏暗的指挥室内，汗珠沿着指挥官的额头滚落，于烛光的闪烁下投下斑驳的影子。他的目光穿透蓝图，仿佛看见那些看不见的铁炉，如同磁场异常般牵扯着他每一根神经。"
+    },
+    "scene2": {
+      "keywords": "(magnetic presence: 1.4), (fatal attraction: 1.3), (invisible threat: 1.5)",
+      "prompt": "A close-up shot reveals the commander’s eyes, reflecting an imagined network of wires connecting the silent iron monsters, symbolizing the invisible threads of doom lurking beneath the revolutionary fervor.",
+      "translation": "镜头特写至指挥官的眼睛，映照出幻想中连接着沉默铁炉的电线网络，象征着潜藏在革命热情下的无形死亡威胁。"
+    },
+    "scene3": {
+      "keywords": "(revolutionary determination: 1.3), (mutual destruction: 1.4), (ticking time bomb: 1.2)",
+      "prompt": "The camera pulls back to reveal the bustling compound, oblivious to the silent countdown hidden within its walls. The commander stands alone, sensing the impending calamity like a ticking time bomb about to shatter the illusion of peace.",
+      "translation": "镜头拉远至熙攘的院落，对隐藏在墙壁内的默默倒计时浑然不觉。指挥官独自站立，仿佛能感受到即将粉碎和平假象的定时炸弹的滴答声。"
+    }
+  },
+  "popular": "",
+  "popularStoryboard": {
+    "scene1": {
+      "keywords": "",
+      "prompt": "",
+      "translation": ""
+    },
+    "scene2": {
+      "keywords": "",
+      "prompt": "",
+      "translation": ""
+    },
+    "scene3": {
+      "keywords": "",
+      "prompt": "",
+      "translation": ""
+    }
+  },
+  "prefect": "这段描述通过对比和隐喻手法，深刻展现了指挥官内心的恐惧与外部紧张局势的微妙平衡。‘磁石般的存在’这一比喻不仅形象描绘了炸药潜在的致命吸引力，也暗示了革命期间不可预知的毁灭力量，增强了叙事的张力。",
+  "prefectStoryboard": {
+    "scene1": {
+      "keywords": "(tension buildup: 1.3), (metaphorical language: 1.4), (emotional depth: 1.5)",
+      "prompt": "The narrative paints a vivid picture of anticipation and dread, where the commander's unspoken fears echo in the silent spaces between words, heightening the sense of impending doom.",
+      "translation": "叙述构建了一幅紧张期待与恐惧交织的画面，指挥官未言明的恐惧在字句间无声回响，增强了即将到来灾难的氛围。"
+    },
+    "scene2": {
+      "keywords": "(historical context: 1.3), (character contrast: 1.4), (psychological insight: 1.5)",
+      "prompt": "Through historical references and character contrasts, the depth of the narrative is enriched, revealing not only the political climate but also the psyche of individuals caught in the revolution's maelstrom.",
+      "translation": "借助历史背景和人物对比，深化了叙事层次，不仅展示了政治气候，还揭示了革命漩涡中个体的心理状态。"
+    },
+    "scene3": {
+      "keywords": "(symbolism: 1.4), (verbal imagery: 1.3), (narrative intensity: 1.5)",
+      "prompt": "The use of powerful symbols and vivid imagery elevates the narrative, transforming abstract fears into palpable threats that resonate with the reader.",
+      "translation": "强力的象征与生动的意象运用增强了叙述，将抽象的恐惧转化为读者能切实体会到的威胁。"
+    }
+  },
+  "important": {
+    "word1": {
+      "explain": "爆炸物，指能够迅速发生化学反应产生大量气体和热量导致爆炸的物质。",
+      "phoneticSymbol": "[ɪkˈspləʊsɪvz]",
+      "word": "explosives"
+    },
+    "word2": {
+      "explain": "电雷管，一种通过电流激发引爆炸药的装置。",
+      "phoneticSymbol": "[ɪˈlektrɪk dɪˈtəneɪtəz]",
+      "word": "electric detonators"
+    },
+    "word3": {
+      "explain": "存在，这里指那些铁炉子虽然看不见，但其威胁感却实实在在地被感知到。",
+      "phoneticSymbol": "[ˈprezəns]",
+      "word": "presence"
+    },
+    "word4": {
+      "explain": "指挥官，负责统率军队或组织的人，此处决策关乎众人生死。",
+      "phoneticSymbol": "[kəˈmændər]",
+      "usage": "The commander made a crucial decision to evacuate the area before the explosion.",
+      "word": "commander",
+      "wordStoryboard": {
+        "scene1": {
+          "keywords": "(commander: 1.5), (decision: 1.3)",
+          "prompt": "In a dimly lit command center, the commander stands with a map spread out before him, his finger tracing possible escape routes, sweat beading on his forehead as he contemplates the weight of his decision.",
+          "translation": "昏暗的指挥中心内，指挥官面前摊开着一张地图，手指在可能的撤离路线上划过，额头上渗出汗珠，他正思量着决定的沉重。"
+        }
+      }
+    },
+    "word5": {
+      "explain": "革命者，追求社会或政治体制根本变革的人群。",
+      "phoneticSymbol": "[ˌrɛvəˈluːʃənɛərɪz]",
+      "usage": "The revolutionaries marched through the streets demanding change.",
+      "word": "revolutionaries",
+      "wordStoryboard": {
+        "scene1": {
+          "keywords": "(revolutionaries: 1.4), (marching: 1.2)",
+          "prompt": "Under a sky heavy with clouds, thousands of revolutionaries, their fists raised high, march in unison down a wide boulevard, chanting slogans for freedom and equality.",
+          "translation": "乌云压顶之下，数千名革命者高举拳头，在一条宽阔的大道上齐步前进，呼喊着自由和平等的口号。"
+        }
+      }
+    },
+    "word6": {
+      "explain": "反革命者，反对或试图阻止革命的人或势力。",
+      "phoneticSymbol": "[ˈkaʊntərˌrɛvəˈluːʃənɛərɪz]",
+      "usage": "Counter-revolutionaries worked secretly to undermine the rebellion.",
+      "word": "counter-revolutionaries",
+      "wordStoryboard": {
+        "scene1": {
+          "keywords": "(counter-revolutionaries: 1.4), (undermine: 1.3)",
+          "prompt": "In a hidden underground chamber, shadowy figures clad in black discuss plans to sabotage the revolution, their voices hushed yet resolute.",
+          "translation": "在一个隐蔽的地下室内，几个穿着黑衣的身影低声讨论着破坏革命的计划，他们的声音虽低沉却坚决。"
+        }
+      }
+    }
+  },
+  "mix": [
+    [
+      "But the commander was afraid of the dozen or so iron stoves inside the building,",
+      "但是指挥官害怕的是楼内那十几个铁炉子，"
+    ],
+    [
+      "filled with explosives and connected to each other by electric detonators.",
+      "里面装满炸药，并通过电雷管相互连接。"
+    ],
+    [
+      "He couldn’t see them, but he could feel their presence like iron sensing the pull of a nearby magnet.",
+      "他虽看不见它们，却能感受到它们的存在，就像铁会被附近的磁铁吸引一般。"
+    ],
+    [
+      "If a defender flipped the switch,",
+      "一旦防守者按下开关，"
+    ],
+    [
+      "revolutionaries and counter-revolutionaries alike would all die in one giant ball of fire.",
+      "革命者与反革命者都将葬身于同一个巨大的火球之中。"
+    ]
+  ],
+  "englishStoryboard": {
+    "scene1": {
+      "keywords": "(commander's fear: 1.3), (iron stoves: 1.2), (invisible threat: 1.1)",
+      "prompt": "In the dimly lit command post, the commander's face is etched with lines of anxiety under the flickering candlelight. His eyes, though not physically seeing the iron stoves, seem to be drawn towards them as if by an unseen magnetic force. The room hums with tension, every shadowy corner hinting at the hidden menace lurking within - those silent, explosive-filled stoves, interconnected like a deadly web by a labyrinth of electrical wires.",
+      "translation": "在烛光摇曳的指挥所内，指挥官的脸庞在昏暗的光线中布满了忧虑的纹路。他的双眼虽未亲眼目睹那些铁炉，却仿佛被一种无形的力量牵引——那是一种只有他能感受到的、犹如附近磁铁吸引铁块般的存在感。房间中弥漫着紧张的气氛，每一个阴暗的角落都暗示着隐藏其中的致命威胁——那些装满炸药、通过电线相互连接的沉默铁炉，构成了一个死亡的网络。"
+    },
+    "scene2": {
+      "keywords": "(electric detonators: 1.8), (invisible threads of danger: 1.6), (defender's hand on switch: 1.7)",
+      "prompt": "A close-up reveals a tangle of copper wires, their ends disappearing into the mouths of the iron beasts, symbolizing the electric detonators that hold the power over life and death. These slender threads of copper, glowing faintly in the half-light, embody the invisible threads of impending doom. A defender's tense hand hovers above a crude switch, the sweat glistening on his palm, a single flip away from igniting a cataclysmic event that could end the lives of both revolutionaries and counter-revolutionaries in a fiery embrace.",
+      "translation": "镜头拉近，展现了一团纠缠的铜线，它们的末端消失在铁炉的口中，象征着掌握生死大权的电雷管。这些在微光下微微发光的细铜丝，成为了即将降临灾难的无形纽带。一名守卫者的手紧绷地悬停在一个简陋的开关上方，掌心的汗水闪烁着，只需轻轻一扳，便能触发一场吞噬革命者与反革命者的火海拥抱，终结所有生命。"
+    },
+    "scene3": {
+      "keywords": "(mutual destruction: 1.9), (ball of fire: 1.8), (revolutionary fate: 1.7)",
+      "prompt": "The commander envisions a horrific scene where the flick of that switch ignites a chain reaction, turning the iron stoves into infernos. Flames erupt from every corner, consuming everything in their path, as if the very air itself were ablaze. In this apocalyptic vision, silhouettes of both revolutionary fighters and their adversaries dissolve into one searing ball of fire, their fates intertwined in a brutal dance of mutual annihilation.",
+      "translation": "指挥官脑中浮现出一幅恐怖的画面：开关一旦触发，连锁反应立即将铁炉变为熊熊火炉。火焰从四面八方喷薄而出，吞噬沿途的一切，仿佛连空气都在燃烧。在这末日景象中，革命战士与对手的剪影一同消融于炽热的火球之中，他们的命运在一场残酷的相互毁灭之舞中紧密相连。"
+    }
+  }
+}
