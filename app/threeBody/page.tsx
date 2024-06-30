@@ -4,7 +4,14 @@ import HeroBgGradient from "components/HeroBgGradient";
 import BgGradient from "components/ui/BgGradient";
 import fse from "fse";
 import Navbar from "components/ui/Navbar";
-import {imageToBase64, HtmlTextRoot, HtmlText, MultiHtmlText, __dirname, __filename} from './utils'
+import {
+  imageToBase64,
+  HtmlTextRoot,
+  HtmlText,
+  MultiHtmlText,
+  __dirname,
+  __filename,
+} from "./utils";
 
 const title = "Float UI - Float UI components demo";
 
@@ -14,32 +21,25 @@ export default async (props) => {
     searchParams: { dirName, section, image, order: _order },
   } = props;
   const order = parseInt(_order);
-  const projectDir = path.resolve(__dirname, `../../../editly/threeBody/output/${dirName}`);
+  const projectDir = path.resolve(
+    __dirname,
+    `../../../editly/threeBody/output/${dirName}`
+  );
   const currentDir = __dirname;
   const project = JSON.parse(
     fse.readFileSync(`${projectDir}/config.json`, "utf8")
   );
-  const { mix, words,  } = project;
-
-  // console.log(imageToBase64(
-  //   `${projectDir}/image/1.png`
-  // ))
-  // useEffect(()=>{
-  //   setTimeout(() => {
-  //     htmlToImage.toSvg(document.getElementById('section1'))
-  //     .then(function (dataUrl) {
-  //       var img = new Image();
-  //       img.src = dataUrl;
-  //       document.body.appendChild(img);
-  //     });
-  //   }, 3000);
-  // })
+  const { mix, important } = project;
+  const words = Array.from({ length: 6 }).map((item, index) => {
+    const { word } = important[`word${index + 1}`];
+    return word;
+  });
 
   try {
     return (
       <div className="">
         <BgGradient />
-        {section === "0" &&
+        {section === "1" &&
           (() => {
             return (
               <section id="section1" className="h-screen">
@@ -53,38 +53,29 @@ export default async (props) => {
                   }}
                 >
                   <div className="ml-10 mr-10 pt-5 h-100vw max-w-3xl mx-auto space-y-4 text-left flex-col justify-center ">
-                   <img src={`${imageToBase64(
-                      `${currentDir}/assets/threeBodyLogo.png`
-                    )}`} width={500}/>
-                        <div className="mt-10 pt-10">
-                          <h1 className="text-3xl text-linear">
-                            三体英文版逐行阅读和翻译
-                          </h1>
-                          <div className="pt-5 text-2xl text-zinc-600">不读英文版，连进ETO的资格都没有</div>
-                          <h1 className="text-3xl text-linear pt-5">
-                            重点词汇标注和解析
-                          </h1>
-                          <div className="pt-5 text-2xl text-zinc-600">真空中，学渣每天前进一小步，也能达到光速1/10</div>
-                          <h1 className="text-3xl text-linear pt-5">
-                            写作艺术赏析、三体流行文化八卦
-                          </h1>
-                          <div className="pt-5 text-2xl text-zinc-600">大刘的语言艺术和票圈文化</div>
-                          <h1 className="text-3xl text-linear pt-5">
-                            三体英文版对比三体中文原版差异
-                          </h1>
-                          <div className="pt-5 text-2xl text-zinc-600">进阶翻译技巧和中美文化差异，体验卧底云天明的三体岁月</div>
-                        </div>
-                    {/* {mix.map((item, index) => {
-                      const [en, ch] = item;
-                      return (
-                        <div key={index} className="mt-10 pt-10">
-                          <h1 className="text-5xl text-linear sm:text-5xl">
-                            {en}
-                          </h1>
-                          <div className="pt-5 text-3xl text-zinc-400">{ch}</div>
-                        </div>
-                      );
-                    })} */}
+                    <img
+                      src={`${imageToBase64(
+                        `${currentDir}/assets/threeBodyLogo.png`
+                      )}`}
+                      width={200}
+                    />
+                    <div className="mt-5 pt-2">
+                      {Array.from({ length: 6 }).map((item, index) => {
+                        const { word, phoneticSymbol, parse, explain } =
+                          important[`word${index + 1}`];
+                        return (
+                          <>
+                            <h1 className="mt-8 text-3xl text-linear">
+                              {word} <span className="text-2xl">{explain}</span>
+                            </h1>
+                            <div className="text-1xl text-zinc-500">
+                              <span className="text-lg">{phoneticSymbol}</span>{" "}
+                              {parse}
+                            </div>
+                          </>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
                 {/* <div className="max-w-3xl mx-auto space-y-4 text-center flex-col justify-center ">
@@ -103,31 +94,57 @@ export default async (props) => {
             );
           })()}
 
-        {/* {section === "2" &&
+        {section === "2" &&
           ((order = 0) => {
+            const [en, zh] = mix[order];
+            const imgNumber = Math.round((3 / mix.length) * order);
             return (
-              <section id="section2" className="max-w-screen mt-4">
+              <section
+                id="section2"
+                className="max-w-screen relative bg-no-repeat"
+                style={{
+                  backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${imageToBase64(
+                    `${projectDir}/image/${imgNumber}.png`
+                  )}')`,
+                }}
+              >
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
-                <div
-                  className="mt-10 relative h-100vw bg-no-repeat bg-cover"
-                  style={{
-                    backgroundImage: `linear-gradient(to right, rgba(0,0,0, 0.0) 0 100%),url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/${order+1}.png`
-                    )}')`,
-                  }}
-                ></div>
 
-                <div className="text-2xl mt-5 text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
-                  <HtmlText tense={tense} text={zh} />
-                </div>
-                <div className="flex mt-5 text-sm font-medium">
-                  <span className="text-1xl text-zinc-400 mt-5">
-                    Tip: 通过对画面的记忆，联想句子, 再回忆单词！
-                  </span>
+                <div className="h-screen w-full space-y-4 text-left relative">
+                  <div className="w-full absolute bottom-10 flex justify-between">
+                    <div className="pr-10 pl-10 ">
+                      <div className="text-2xl text-gray-200 leading-loose tracking-wide md:text-3xl font-title">
+                        <HtmlText tense={words} text={en} />
+                      </div>
+                      <div className="text-2xl text-gray-200 leading-loose font-body tracking-wide md:text-2xl">
+                        <HtmlText tense={words} text={zh} />
+                      </div>
+                    </div>
+                    <div className="pr-10 pl-10 ">
+                      {words.map((word, index) => {
+                        if (en.includes(word)) {
+                          const { phoneticSymbol, explain, parse } =
+                            Object.values(important).find(
+                              (item) => item.word === word
+                            );
+                          return (
+                            <div
+                              key={index}
+                              className="mt-10 text-2xl font-body tracking-wide md:text-2xl"
+                            >
+                              <span className="text-gray-200">
+                                {word} {phoneticSymbol} {explain}
+                              </span>{" "}
+                            </div>
+                          );
+                        }
+                      })}
+                    </div>
+                  </div>
                 </div>
               </section>
             );
-          })(order)} */}
+          })(order)}
         {/* {section === "3" && (
           <section id="section3" className=" max-w-screen mt-4">
             <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />

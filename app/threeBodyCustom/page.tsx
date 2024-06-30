@@ -1,25 +1,40 @@
-import path from "path";
-import Link from "next/link";
-import HeroBgGradient from "components/HeroBgGradient";
-import BgGradient from "components/ui/BgGradient";
-import fse from "fse";
-import Navbar from "components/ui/Navbar";
-import {imageToBase64, HtmlTextRoot, HtmlText, MultiHtmlText, __dirname, __filename} from './utils'
+import path from 'path'
+import Link from 'next/link'
+import HeroBgGradient from 'components/HeroBgGradient'
+import BgGradient from 'components/ui/BgGradient'
+import fse from 'fse'
+import Navbar from 'components/ui/Navbar'
+import {
+  imageToBase64,
+  HtmlTextRoot,
+  HtmlText,
+  MultiHtmlText,
+  __dirname,
+  __filename
+} from './utils'
 
-const title = "Float UI - Float UI components demo";
+const title = 'Float UI - Float UI components demo'
 
-export default async (props) => {
-  console.log(props, __filename, __dirname);
+export default async props => {
+  console.log(props, __filename, __dirname)
   const {
-    searchParams: { dirName, section, image, order: _order },
-  } = props;
-  const order = parseInt(_order);
-  const projectDir = path.resolve(__dirname, `../../../editly/threeBody/output/${dirName}`);
-  const currentDir = __dirname;
+    searchParams: { dirName, section, image, order: _order }
+  } = props
+  const order = parseInt(_order)
+  const projectDir = path.resolve(
+    __dirname,
+    `../../../editly/threeBody/output/${dirName}`
+  )
+  const currentDir = __dirname
+
+  const assetsDir = path.resolve(
+    currentDir,
+    `assets`
+  )
   const project = JSON.parse(
-    fse.readFileSync(`${projectDir}/config.json`, "utf8")
-  );
-  const { mix, words,  } = project;
+    fse.readFileSync(`${projectDir}/config.json`, 'utf8')
+  )
+  const { mix, words } = project
 
   // console.log(imageToBase64(
   //   `${projectDir}/image/1.png`
@@ -37,43 +52,54 @@ export default async (props) => {
 
   try {
     return (
-      <div className="">
+      <div className=''>
         <BgGradient />
-        {section === "0" &&
+        {section === '1' &&
           (() => {
             return (
-              <section id="section1" className="h-screen">
-                <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
+              <section id='section1' className='h-screen'>
+                <HeroBgGradient className='absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10' />
                 <div
-                  className="relative bg-no-repeat"
+                  className='relative bg-no-repeat bg-contain'
                   style={{
                     backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.8) 50%, rgba(0,0,0,0.0) 70%),url('${imageToBase64(
-                      `${projectDir}/image/1.png`
-                    )}')`,
+                      `${assetsDir}/image/3.png`
+                    )}')`
                   }}
                 >
-                  <div className="ml-10 mr-10 pt-5 h-100vw max-w-3xl mx-auto space-y-4 text-left flex-col justify-center ">
-                   <img src={`${imageToBase64(
-                      `${currentDir}/assets/threeBodyLogo.png`
-                    )}`} width={500}/>
-                        <div className="mt-10 pt-10">
-                          <h1 className="text-3xl text-linear">
-                            三体英文版逐行阅读和翻译
-                          </h1>
-                          <div className="pt-5 text-2xl text-zinc-600">不读英文版，连进ETO的资格都没有</div>
-                          <h1 className="text-3xl text-linear pt-5">
-                            重点词汇标注和解析
-                          </h1>
-                          <div className="pt-5 text-2xl text-zinc-600">真空中，学渣每天前进一小步，也能达到光速1/10</div>
-                          <h1 className="text-3xl text-linear pt-5">
-                            写作艺术赏析、三体流行文化八卦
-                          </h1>
-                          <div className="pt-5 text-2xl text-zinc-600">大刘的语言艺术和票圈文化</div>
-                          <h1 className="text-3xl text-linear pt-5">
-                            三体英文版对比三体中文原版差异
-                          </h1>
-                          <div className="pt-5 text-2xl text-zinc-600">进阶翻译技巧和中美文化差异，体验卧底云天明的三体岁月</div>
-                        </div>
+                  <div className='ml-10 mr-10 pt-5 h-100vw max-w-3xl mx-auto space-y-4 text-left flex-col justify-center '>
+                    <img
+                      src={`${imageToBase64(
+                        `${currentDir}/assets/threeBodyLogo.png`
+                      )}`}
+                      width={300}
+                    />
+                    <div className='mt-10 pt-10'>
+                      <h1 className='text-3xl text-linear'>
+                        探索三体宇宙：英文版精读与并行翻译之旅
+                      </h1>
+                      <div className='pt-5 text-1xl text-zinc-600'>
+                        不沉浸于英文原版《三体》，怎能触及ETO智识的门槛？
+                      </div>
+                      <h1 className='text-3xl text-linear pt-5'>
+                        词汇星光图：核心术语标注与深度解读
+                      </h1>
+                      <div className='pt-5 text-1xl text-zinc-600'>
+                        在知识的真空里，即便是学习路上的慢行者，每日微小的进步也能累积至光速的十分之一。
+                      </div>
+                      <h1 className='text-3xl text-linear pt-5'>
+                        文字的宇宙奇点：大刘笔下艺术探秘与三体现象文化解码
+                      </h1>
+                      <div className='pt-5 text-1xl text-zinc-600'>
+                        深入刘慈欣的文字宇宙，揭秘那些塑造了朋友圈热议话题的艺术手法，同时追踪那些在三体社群中流传的热门梗与幕后故事。
+                      </div>
+                      <h1 className='text-3xl text-linear pt-5'>
+                        双语桥梁：《三体》英汉版本比较与跨文化之旅
+                      </h1>
+                      <div className='pt-5 text-1xl text-zinc-600'>
+                        跨越语言的星际之门，通过《三体》英汉版本的细致比对，掌握进阶翻译秘籍，洞察中美文化差异，仿佛亲身经历云天明在三体世界的卧底时光，每一次字句转换都是对两个世界理解的深化。
+                      </div>
+                    </div>
                     {/* {mix.map((item, index) => {
                       const [en, ch] = item;
                       return (
@@ -100,34 +126,40 @@ export default async (props) => {
                   })}
                 </div> */}
               </section>
-            );
+            )
           })()}
 
-        {/* {section === "2" &&
+        {section === '2' &&
           ((order = 0) => {
             return (
-              <section id="section2" className="max-w-screen mt-4">
-                <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
+              <section id='section2' className='max-w-screen'>
+                <HeroBgGradient className='absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10' />
                 <div
-                  className="mt-10 relative h-100vw bg-no-repeat bg-cover"
+                  className='relative bg-no-repeat pt-5'
                   style={{
-                    backgroundImage: `linear-gradient(to right, rgba(0,0,0, 0.0) 0 100%),url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/${order+1}.png`
-                    )}')`,
+                    backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.8) 50%, rgba(0,0,0,0.8) 70%),url('${imageToBase64(
+                      `${assetsDir}/image/2.png`
+                    )}')`
                   }}
-                ></div>
-
-                <div className="text-2xl mt-5 text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
-                  <HtmlText tense={tense} text={zh} />
-                </div>
-                <div className="flex mt-5 text-sm font-medium">
-                  <span className="text-1xl text-zinc-400 mt-5">
-                    Tip: 通过对画面的记忆，联想句子, 再回忆单词！
-                  </span>
+                >
+                  <div className='text-2xl h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl'>
+                    <img
+                      src={`${imageToBase64(
+                        `${currentDir}/assets/threeBodyLogo.png`
+                      )}`}
+                      width={200}
+                    />
+                    <div className='flex flex-col items-center mt-20 pt-20'>
+                      <h1 className='text-linear pt-5'>Part 1</h1>
+                      <h1 className='text-linear pt-5'>The Madness Years</h1>
+                      <h1 className='text-linear pt-5'>第一章： 疯狂年代</h1>
+                      <h1 className='text-linear pt-5 text-2xl'>中国，1967年</h1>
+                    </div>
+                  </div>
                 </div>
               </section>
-            );
-          })(order)} */}
+            )
+          })(order)}
         {/* {section === "3" && (
           <section id="section3" className=" max-w-screen mt-4">
             <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
@@ -348,8 +380,8 @@ export default async (props) => {
             );
           })(order)} */}
       </div>
-    );
+    )
   } catch (err) {
-    return <></>;
+    return <></>
   }
-};
+}
