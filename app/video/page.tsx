@@ -40,7 +40,7 @@ const fontColor = [
 
 function applyFontColors({
   word,
-  roots: _roots =[],
+  roots: _roots = [],
   mask,
 }: {
   word: string;
@@ -115,8 +115,6 @@ function HtmlText({
       /\(([^\)]*)\)/g,
       ` <b class='${"underline-offset-8 underline decoration-blue-500"}' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> `
     );
-
-
   } else {
     html = text.replace(
       /\(([^\)]*)\)/g,
@@ -129,9 +127,11 @@ function HtmlText({
   }
 
   if (!mask && tense?.length) {
-    tense.sort((a,b)=>-(a.length - b.length)).forEach((item) => {
-      html = html.replace(`${item}`, `<b class='text-blue-500'>${item}</b>`);
-    });
+    tense
+      .sort((a, b) => -(a.length - b.length))
+      .forEach((item) => {
+        html = html.replace(`${item}`, `<b class='text-blue-500'>${item}</b>`);
+      });
   }
 
   return <span className={cls} dangerouslySetInnerHTML={{ __html: html }} />;
@@ -144,7 +144,6 @@ function MultiHtmlText({
   text: string;
   tense?: Array<string>;
 }) {
-
   return (
     <>
       {text.split("\n").map((text, index) => {
@@ -172,12 +171,30 @@ export default async (props) => {
     searchParams: { dirName, section, image, order: _order },
   } = props;
   const order = parseInt(_order);
-  const projectDir = path.resolve(__dirname, `../../../editly/associateEnglish/output/${dirName}`);
+  const projectDir = path.resolve(
+    __dirname,
+    `../../../editly/associateEnglish/output/${dirName}`
+  );
 
   const project = JSON.parse(
     fse.readFileSync(`${projectDir}/config.json`, "utf8")
   );
-  const { commonRoot, word, words, zh, mix, tense, keys, details } = project;
+  const {
+    commonRoot,
+    word,
+    words,
+    zh,
+    mix,
+    tense,
+    keys,
+    details,
+    sceneImage1,
+    sceneImage2,
+    sceneImage3,
+    wordImage1,
+    wordImage2,
+    wordImage3,
+  } = project;
   // useEffect(()=>{
   //   setTimeout(() => {
   //     htmlToImage.toSvg(document.getElementById('section1'))
@@ -195,6 +212,12 @@ export default async (props) => {
         <BgGradient />
         {section === "1" &&
           (() => {
+            let url = project[`sceneImage1`];
+            if (!url) {
+              url = `data:image/jpeg;base64,${imageToBase64(
+                `${projectDir}/image/1.png`
+              )}`;
+            }
             return (
               <section id="section1" className="h-screen">
                 <Navbar />
@@ -202,9 +225,7 @@ export default async (props) => {
                 <div
                   className="mt-10 relative bg-no-repeat bg-cover"
                   style={{
-                    backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.6) 20%, rgba(0,0,0,0.0) 70%),url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/1.png`
-                    )}')`,
+                    backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.6) 20%, rgba(0,0,0,0.0) 70%),url('${url}')`,
                   }}
                 >
                   <div className="ml-4 mr-4 pt-10 h-100vw max-w-3xl mx-auto space-y-4 text-left flex-col justify-center ">
@@ -215,7 +236,9 @@ export default async (props) => {
                           <h1 className="text-5xl text-linear sm:text-5xl">
                             {en}
                           </h1>
-                          <div className="pt-5 text-3xl text-zinc-400">{ch}</div>
+                          <div className="pt-5 text-3xl text-zinc-400">
+                            {ch}
+                          </div>
                         </div>
                       );
                     })}
@@ -224,11 +247,13 @@ export default async (props) => {
                 <div className="max-w-3xl mx-auto space-y-4 text-center flex-col justify-center ">
                   {commonRoot?.map(({ root, definition, source }, index) => {
                     return (
-                      <span  key={index}>
+                      <span key={index}>
                         <h1 className="flex-shrink-0 w-full pt-20 text-6xl text-linear">
                           {root} <span className="text-4xl">{definition}</span>
                         </h1>
-                        <div className="text-2xl pt-10 text-zinc-400">词根： {source}</div>
+                        <div className="text-2xl pt-10 text-zinc-400">
+                          词根： {source}
+                        </div>
                       </span>
                     );
                   })}
@@ -239,15 +264,19 @@ export default async (props) => {
 
         {section === "2" &&
           ((order = 0) => {
+            let url = project[`sceneImage${order + 1}`];
+            if (!url) {
+              url = `data:image/jpeg;base64,${imageToBase64(
+                `${projectDir}/image/${order + 1}.png`
+              )}`;
+            }
             return (
               <section id="section2" className="max-w-screen mt-4">
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div
                   className="mt-10 relative h-100vw bg-no-repeat bg-cover"
                   style={{
-                    backgroundImage: `linear-gradient(to right, rgba(0,0,0, 0.0) 0 100%),url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/${order+1}.png`
-                    )}')`,
+                    backgroundImage: `linear-gradient(to right, rgba(0,0,0, 0.0) 0 100%),url('${url}')`,
                   }}
                 ></div>
 
@@ -284,38 +313,46 @@ export default async (props) => {
           <section id="section4" className="max-w-screen mt-4">
             <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
             <div className="sm:text-2xl m-10 pt-10">
-
               <div className="flex flex-col mt-5 text-sm font-medium">
                 {keys.map((key, index) => (
-                  <div key={index}className="flex flex-col mt-10 text-sm font-medium">
+                  <div
+                    key={index}
+                    className="flex flex-col mt-10 text-sm font-medium"
+                  >
                     <h1 className="text-3xl text-linear sm:text-5xl">{key}</h1>
-                    <div className="text-2xl text-zinc-400 mt-5">{details[index]}</div>
+                    <div className="text-2xl text-zinc-400 mt-5">
+                      {details[index]}
+                    </div>
                   </div>
                 ))}
               </div>
-              {
-                commonRoot?.length > 0 && <><div className="flex mt-20 justify-center text-1xl font-medium">
-                <Link
-                  href="/components"
-                  className="flex items-center gap-1 py-3 px-4 rounded-md text-center text-white border-none bg-zinc-800 shadow-md w-auto hover:bg-zinc-700 duration-150 sm:py-2.5"
-                >
-                  共同词根
-                </Link>
-              </div>
-              <div className="max-w-3xl space-y-4 text-center flex-col justify-center ">
-                {commonRoot?.map(({ root, definition, source }, index) => {
-                  return (
-                    <div key={index} className="pt-10">
-                      <h1 className="flex-shrink-0 w-full text-4xl text-linear sm:text-6xl">
-                        <span className="text-blue-500">{root}</span>{" "}
-                        <span className="text-3xl">{definition}</span>
-                      </h1>
-                      <div className="pt-5 text-zinc-400">词根： {source}</div>
-                    </div>
-                  );
-                })}
-              </div></>
-              }
+              {commonRoot?.length > 0 && (
+                <>
+                  <div className="flex mt-20 justify-center text-1xl font-medium">
+                    <Link
+                      href="/components"
+                      className="flex items-center gap-1 py-3 px-4 rounded-md text-center text-white border-none bg-zinc-800 shadow-md w-auto hover:bg-zinc-700 duration-150 sm:py-2.5"
+                    >
+                      共同词根
+                    </Link>
+                  </div>
+                  <div className="max-w-3xl space-y-4 text-center flex-col justify-center ">
+                    {commonRoot?.map(({ root, definition, source }, index) => {
+                      return (
+                        <div key={index} className="pt-10">
+                          <h1 className="flex-shrink-0 w-full text-4xl text-linear sm:text-6xl">
+                            <span className="text-blue-500">{root}</span>{" "}
+                            <span className="text-3xl">{definition}</span>
+                          </h1>
+                          <div className="pt-5 text-zinc-400">
+                            词根： {source}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
             </div>
           </section>
         )}
@@ -338,18 +375,22 @@ export default async (props) => {
                           root={wordRoot}
                         />
                       </h1>
-                      <div className="text-zinc-400 mt-5  sm:text-2xl text-center">{pronunciation}</div>
+                      <div className="text-zinc-400 mt-5  sm:text-2xl text-center">
+                        {pronunciation}
+                      </div>
                     </div>
                   </div>
                   <div className="max-w-3xl mx-auto space-y-4 text-center flex-col justify-center ">
                     {wordRoot?.map(({ root, definition, source }, index) => {
                       return (
-                        <span  key={index}>
+                        <span key={index}>
                           <h1 className="flex-shrink-0 w-full pt-20 text-6xl text-linear sm:text-6xl">
                             <span className="text-blue-500">{root}</span>{" "}
                             <span className="text-4xl">{definition}</span>
                           </h1>
-                          <div className="pt-5 text-2xl text-zinc-400">词根： {source}</div>
+                          <div className="pt-5 text-2xl text-zinc-400">
+                            词根： {source}
+                          </div>
                         </span>
                       );
                     })}
@@ -363,6 +404,12 @@ export default async (props) => {
           })(order)}
         {section === "6" &&
           ((order = 0) => {
+            let url = project[`wordImage${order + 1}`];
+            if (!url) {
+              url = `data:image/jpeg;base64,${imageToBase64(
+                `${projectDir}/image/word${order + 1}.png`
+              )}`;
+            }
             const { sentence } = words[order];
             return (
               <section id="section6" className="mt-5">
@@ -371,9 +418,7 @@ export default async (props) => {
                 <div
                   className="m-4 mt-10 pt-10 relative bg-no-repeat bg-cover"
                   style={{
-                    backgroundImage: `url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/word${order+1}.png`
-                    )}')`,
+                    backgroundImage: `url('${url}')`,
                   }}
                 >
                   <div className="ml-4 mr-4 pt-10 h-100vw max-w-3xl mx-auto space-y-4 text-left flex-col justify-center "></div>
@@ -388,15 +433,19 @@ export default async (props) => {
           })(order)}
         {section === "7" &&
           ((order = 0) => {
+            let url = project[`sceneImage${order + 1}`];
+            if (!url) {
+              url = `data:image/jpeg;base64,${imageToBase64(
+                `${projectDir}/image/${order + 1}.png`
+              )}`;
+            }
             return (
               <section id="section7" className="max-w-screen mt-10">
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div
                   className="relative h-100vw bg-no-repeat bg-cover"
                   style={{
-                    backgroundImage: `linear-gradient(to right, rgba(0,0,0, 0.0) 0 100%),url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/${order+1}.png`
-                    )}')`,
+                    backgroundImage: `linear-gradient(to right, rgba(0,0,0, 0.0) 0 100%),url('${url}')`,
                   }}
                 ></div>
 
@@ -427,7 +476,10 @@ export default async (props) => {
                       const pronunciation = details[order];
 
                       return (
-                        <div key={index} className="flex flex-col mt-10 pt-10 font-medium">
+                        <div
+                          key={index}
+                          className="flex flex-col mt-10 pt-10 font-medium"
+                        >
                           <h1 className="text-3xl text-linear sm:text-5xl">
                             {" "}
                             <HtmlTextRoot

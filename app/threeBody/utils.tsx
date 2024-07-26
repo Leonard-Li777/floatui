@@ -13,7 +13,7 @@ export function getRandomInt(n: number): number {
 }
 
 export function imageToBase64(imagePath) {
-  console.log(3333, imagePath)
+  console.log(3333, imagePath);
   const imageBuffer = fse.readFileSync(imagePath);
   const base64Image = imageBuffer.toString("base64");
   return `data:image/jpeg;base64,${base64Image}`;
@@ -35,7 +35,7 @@ export const fontColor = [
 
 export function applyFontColors({
   word,
-  roots: _roots =[],
+  roots: _roots = [],
   mask,
 }: {
   word: string;
@@ -110,8 +110,6 @@ export function HtmlText({
       /\(([^\)]*)\)/g,
       ` <b class='${"underline-offset-8 underline decoration-blue-500"}' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> `
     );
-
-
   } else {
     html = text.replace(
       /\(([^\)]*)\)/g,
@@ -139,7 +137,6 @@ export function MultiHtmlText({
   text: string;
   tense?: Array<string>;
 }) {
-
   return (
     <>
       {text.split("\n").map((text, index) => {

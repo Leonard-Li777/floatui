@@ -97,7 +97,7 @@ export default async (props) => {
         {section === "2" &&
           ((order = 0) => {
             const [en, zh] = mix[order];
-            const imgNumber = Math.round((3 / mix.length) * order);
+            const imgNumber = Math.floor((3 / mix.length) * order) + 1;
             return (
               <section
                 id="section2"
@@ -111,12 +111,12 @@ export default async (props) => {
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
 
                 <div className="h-screen w-full space-y-4 text-left relative">
-                  <div className="w-full absolute bottom-10 flex justify-between">
+                  <div className="w-full absolute bottom-10">
                     <div className="pr-10 pl-10 ">
-                      <div className="text-2xl text-gray-200 leading-loose tracking-wide md:text-3xl font-title">
-                        <HtmlText tense={words} text={en} />
+                      <div className="text-2xl text-gray-200 leading-loose tracking-wide md:text-1xl font-title">
+                        <HtmlText tense={words} important={important} text={en} />
                       </div>
-                      <div className="text-2xl text-gray-200 leading-loose font-body tracking-wide md:text-2xl">
+                      <div className="text-2xl text-gray-200 leading-loose font-body tracking-wide md:text-1xl">
                         <HtmlText tense={words} text={zh} />
                       </div>
                     </div>
