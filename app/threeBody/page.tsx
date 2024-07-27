@@ -29,7 +29,7 @@ export default async (props) => {
   const project = JSON.parse(
     fse.readFileSync(`${projectDir}/config.json`, "utf8")
   );
-  const { mix, important } = project;
+  const { mix, important, english, chinese, translation } = project;
   const words = Array.from({ length: 6 }).map((item, index) => {
     const { word } = important[`word${index + 1}`];
     return word;
@@ -113,162 +113,136 @@ export default async (props) => {
                 <div className="h-screen w-full space-y-4 text-left relative">
                   <div className="w-full absolute bottom-10">
                     <div className="pr-10 pl-10 ">
-                      <div className="text-2xl text-gray-200 leading-loose tracking-wide md:text-1xl font-title">
-                        <HtmlText tense={words} important={important} text={en} />
+                      <div className="text-linear leading-loose tracking-wide text-2xl">
+                        <HtmlText
+                          tense={words}
+                          important={important}
+                          text={en}
+                        />
                       </div>
-                      <div className="text-2xl text-gray-200 leading-loose font-body tracking-wide md:text-1xl">
+                      <div className=" text-gray-400 leading-loose tracking-widest text-1xl font-body">
                         <HtmlText tense={words} text={zh} />
                       </div>
-                    </div>
-                    <div className="pr-10 pl-10 ">
-                      {words.map((word, index) => {
-                        if (en.includes(word)) {
-                          const { phoneticSymbol, explain, parse } =
-                            Object.values(important).find(
-                              (item) => item.word === word
-                            );
-                          return (
-                            <div
-                              key={index}
-                              className="mt-10 text-2xl font-body tracking-wide md:text-2xl"
-                            >
-                              <span className="text-gray-200">
-                                {word} {phoneticSymbol} {explain}
-                              </span>{" "}
-                            </div>
-                          );
-                        }
-                      })}
                     </div>
                   </div>
                 </div>
               </section>
             );
           })(order)}
-        {/* {section === "3" && (
-          <section id="section3" className=" max-w-screen mt-4">
-            <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
-            <div className="m-10">
-              <div className="flex mt-20 justify-center text-sm font-medium">
-                <Link
-                  href="/components"
-                  className="text-2xl flex items-center gap-1 py-3 px-4 rounded-md text-center text-white border-none bg-zinc-800 shadow-md w-auto hover:bg-zinc-700 duration-150 sm:py-2.5"
-                >
-                  听力练习巩固
-                </Link>
-              </div>
-              <div className="text-2xl flex flex-col mt-5 font-medium">
-                <MultiHtmlText text={mix} tense={tense} />
-              </div>
-            </div>
-          </section>
-        )} */}
-        {/* {section === "4" && (
-          <section id="section4" className="max-w-screen mt-4">
-            <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
-            <div className="sm:text-2xl m-10 pt-10">
-
-              <div className="flex flex-col mt-5 text-sm font-medium">
-                {keys.map((key, index) => (
-                  <div key={index}className="flex flex-col mt-10 text-sm font-medium">
-                    <h1 className="text-3xl text-linear sm:text-5xl">{key}</h1>
-                    <div className="text-2xl text-zinc-400 mt-5">{details[index]}</div>
-                  </div>
-                ))}
-              </div>
-              {
-                commonRoot?.length > 0 && <><div className="flex mt-20 justify-center text-1xl font-medium">
-                <Link
-                  href="/components"
-                  className="flex items-center gap-1 py-3 px-4 rounded-md text-center text-white border-none bg-zinc-800 shadow-md w-auto hover:bg-zinc-700 duration-150 sm:py-2.5"
-                >
-                  共同词根
-                </Link>
-              </div>
-              <div className="max-w-3xl space-y-4 text-center flex-col justify-center ">
-                {commonRoot?.map(({ root, definition, source }, index) => {
-                  return (
-                    <div key={index} className="pt-10">
-                      <h1 className="flex-shrink-0 w-full text-4xl text-linear sm:text-6xl">
-                        <span className="text-blue-500">{root}</span>{" "}
-                        <span className="text-3xl">{definition}</span>
-                      </h1>
-                      <div className="pt-5 text-zinc-400">词根： {source}</div>
-                    </div>
-                  );
-                })}
-              </div></>
-              }
-            </div>
-          </section>
-        )} */}
-        {/* {section === "5" &&
+        {section === "3" &&
           ((order = 0) => {
-            const { word, root: wordRoot, parse } = words[order];
-            const pronunciation = details[order];
-
+            const { phoneticSymbol, explain, word, parse, usage, image } =
+              important[`word${order}`];
             return (
-              <section id="section5" className="max-w-screen mt-4">
+              <section
+                id="section3"
+                className="max-w-screen relative bg-no-repeat"
+                style={{
+                  backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${imageToBase64(
+                    `${projectDir}/image/${image || 1}.png`
+                  )}')`,
+                }}
+              >
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
-                <div className="m-10 pt-10">
-                  <div className="flex flex-col mt-5 text-sm font-medium">
-                    <div className="flex flex-col mt-10 text-sm font-medium">
-                      <h1 className="text-center text-3xl text-linear sm:text-6xl">
-                        <HtmlTextRoot
-                          text={word}
-                          cls=""
-                          commonRoot={commonRoot}
-                          root={wordRoot}
-                        />
-                      </h1>
-                      <div className="text-zinc-400 mt-5  sm:text-2xl text-center">{pronunciation}</div>
-                    </div>
-                  </div>
-                  <div className="max-w-3xl mx-auto space-y-4 text-center flex-col justify-center ">
-                    {wordRoot?.map(({ root, definition, source }, index) => {
-                      return (
-                        <span  key={index}>
-                          <h1 className="flex-shrink-0 w-full pt-20 text-6xl text-linear sm:text-6xl">
-                            <span className="text-blue-500">{root}</span>{" "}
-                            <span className="text-4xl">{definition}</span>
-                          </h1>
-                          <div className="pt-5 text-2xl text-zinc-400">词根： {source}</div>
-                        </span>
-                      );
-                    })}
-                    <div className="text-2xl m-10 text-center text-gray-100/30 leading-loose font-body tracking-wide md:text-4xl">
-                      {parse}
+                <div className="h-screen w-full text-left relative">
+                  <div className="w-full absolute bottom-10 bg-black/50 border-spacing-3 rounded-xl">
+                    <div className="p-3 max-w-screen-xl mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between flex md:px-8">
+                      <ul className="">
+                        <li className="">
+                          <h4 className="text-4xl  text-blue-500 font-semibold">
+                            {word}
+                          </h4>
+                          <p className="text-2xl text-linear mt-3 font-medium">
+                            {phoneticSymbol} {explain}{" "}
+                          </p>
+                        </li>
+                      </ul>
+                      <div className="flex-none mt-2 text-2xl">
+                        <p className=" text-blue-500">
+                          <HtmlText tense={[word]} text={usage} />
+                        </p>
+                        <h3 className="mt-3 text-linear text-1xl">{parse}</h3>
+                      </div>
                     </div>
                   </div>
                 </div>
               </section>
             );
-          })(order)} */}
-        {/* {section === "6" &&
+          })(order)}
+        {section === "4" &&
           ((order = 0) => {
-            const { sentence } = words[order];
             return (
-              <section id="section6" className="mt-5">
-                <Navbar />
+              <section
+                id="section4"
+                className="max-w-screen relative bg-no-repeat"
+                style={{
+                  backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${imageToBase64(
+                    `${projectDir}/image/${image || 1}.png`
+                  )}')`,
+                }}
+              >
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
-                <div
-                  className="m-4 mt-10 pt-10 relative bg-no-repeat bg-cover"
-                  style={{
-                    backgroundImage: `url('data:image/jpeg;base64,${imageToBase64(
-                      `${projectDir}/image/word${order+1}.png`
-                    )}')`,
-                  }}
-                >
-                  <div className="ml-4 mr-4 pt-10 h-100vw max-w-3xl mx-auto space-y-4 text-left flex-col justify-center "></div>
-                </div>
-                <div className="flex m-5 justify-center text-sm font-medium">
-                  <div className="text-2xl text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
-                    <HtmlText tense={tense} text={sentence} />
+                <div className="h-screen w-full text-left relative">
+                  <div className="w-full absolute bottom-10 bg-black/50 border-spacing-3 rounded-xl">
+                    <div className="flex-none p-2 text-sm font-body">
+                      {/* <h3 className="mt-3 text-linear text-1xl">{english}</h3> */}
+                      <h3 className="mt-3 text-linear text-lg">
+                        中文版：<span className="">{chinese}</span>
+                      </h3>
+                    </div>
                   </div>
                 </div>
               </section>
             );
-          })(order)} */}
+          })(order)}
+
+        {section === "5" &&
+          ((order = 0) => {
+            return (
+              <section id="section5" className="max-w-screen">
+                <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
+                <div className="h-screen w-full text-left grid items-center pl-20 pr-20">
+                  <div className="flex-none p-2 text-sm font-body">
+                    <h3 className="text-lg leading-[4rem]">
+                      <HtmlText
+                        tense={words}
+                        important={important}
+                        text={english}
+                      />
+                    </h3>
+                    <h3 className="text-linear text-lg mt-16">
+                      英文版：
+                      <span className="">{translation}</span>
+                    </h3>
+                    <h3 className="mt-10 text-linear text-lg">
+                      中文版：<span className="">{chinese}</span>
+                    </h3>
+                  </div>
+                </div>
+              </section>
+            );
+          })(order)}
+        {section === "6" &&
+          ((order = 0) => {
+            return (
+              <section
+                id="section3"
+                className="max-w-screen relative bg-no-repeat"
+                style={{
+                  backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${imageToBase64(
+                    `${projectDir}/image/${order || 1}.png`
+                  )}')`,
+                }}
+              >
+                <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
+                <div className="h-screen w-full text-left relative">
+                  <div className="w-full absolute bottom-10 bg-black/50 border-spacing-3 rounded-xl">
+                    <div className="p-3 max-w-screen-xl mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between flex md:px-8"></div>
+                  </div>
+                </div>
+              </section>
+            );
+          })(order)}
         {/* {section === "7" &&
           ((order = 0) => {
             return (

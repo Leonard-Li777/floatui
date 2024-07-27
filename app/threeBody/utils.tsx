@@ -97,11 +97,13 @@ export function HtmlText({
   text,
   cls,
   tense,
+  important,
   mask,
 }: {
   text: string;
   cls?: string;
   tense?: Array<string>;
+  important?: Record<string, any>;
   mask?: boolean;
 }) {
   let html = "";
@@ -113,18 +115,35 @@ export function HtmlText({
   } else {
     html = text.replace(
       /\(([^\)]*)\)/g,
-      ` <b class='${
-        !tense?.length
-          ? "underline-offset-8 underline decoration-blue-500"
-          : "text-blue-500"
-      }' >$1</b> `
+      ` <div className="tooltip tooltip-open" data-tip="hello">
+        <b class='${
+          !tense?.length
+            ? "underline-offset-8 underline decoration-blue-500"
+            : "text-blue-500"
+        }' >$1</b> 
+      </div>`
     );
   }
 
   if (!mask && tense?.length) {
-    tense.sort((a,b)=>-(a.length - b.length)).forEach((item) => {
-      html = html.replace(`${item}`, `<b class='text-blue-500'>${item}</b>`);
-    });
+    tense
+      .sort((a, b) => -(a.length - b.length))
+      .forEach((item) => {
+        const { phoneticSymbol = '', explain = '', word = '', parse = '' } =
+          Object.values(important ?? {}).find(({ word }) => item === word) ??
+          {};
+        html = html.replace(
+          `${item}`,
+          word
+            ? `<div class="indicator ">
+                <div class="indicator-item indicator-center badge text-white/80 badge-outline border-black/50 mb-4 text-md bg-black/50">
+                    <p>${phoneticSymbol} ${explain}</p>
+                </div>
+                <b class='text-blue-500'>${item}</b>
+              </div>`
+            : `<b class='text-blue-500'>${item}</b>`
+        );
+      });
   }
 
   return <span className={cls} dangerouslySetInnerHTML={{ __html: html }} />;

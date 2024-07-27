@@ -11,7 +11,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      title: ['DOUYU'],
+      title: ['抖音美好体'],
       body: ['Microsoft YaHei UI'],
     },
     extend: {},

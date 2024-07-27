@@ -1,40 +1,37 @@
-import path from 'path'
-import Link from 'next/link'
-import HeroBgGradient from 'components/HeroBgGradient'
-import BgGradient from 'components/ui/BgGradient'
-import fse from 'fse'
-import Navbar from 'components/ui/Navbar'
+import path from "path";
+import Link from "next/link";
+import HeroBgGradient from "components/HeroBgGradient";
+import BgGradient from "components/ui/BgGradient";
+import fse from "fse";
+import Navbar from "components/ui/Navbar";
 import {
   imageToBase64,
   HtmlTextRoot,
   HtmlText,
   MultiHtmlText,
   __dirname,
-  __filename
-} from './utils'
+  __filename,
+} from "./utils";
 
-const title = 'Float UI - Float UI components demo'
+const title = "Float UI - Float UI components demo";
 
-export default async props => {
-  console.log(props, __filename, __dirname)
+export default async (props) => {
+  console.log(props, __filename, __dirname);
   const {
-    searchParams: { dirName, section, image, order: _order }
-  } = props
-  const order = parseInt(_order)
+    searchParams: { dirName, section, image, order: _order },
+  } = props;
+  const order = parseInt(_order);
   const projectDir = path.resolve(
     __dirname,
     `../../../editly/threeBody/output/${dirName}`
-  )
-  const currentDir = __dirname
+  );
+  const currentDir = __dirname;
 
-  const assetsDir = path.resolve(
-    currentDir,
-    `assets`
-  )
+  const assetsDir = path.resolve(currentDir, `assets`);
   const project = JSON.parse(
-    fse.readFileSync(`${projectDir}/config.json`, 'utf8')
-  )
-  const { mix, words } = project
+    fse.readFileSync(`${projectDir}/config.json`, "utf8")
+  );
+  const { mix, words } = project;
 
   // console.log(imageToBase64(
   //   `${projectDir}/image/1.png`
@@ -52,51 +49,51 @@ export default async props => {
 
   try {
     return (
-      <div className=''>
+      <div className="">
         <BgGradient />
-        {section === '1' &&
+        {section === "1" &&
           (() => {
             return (
-              <section id='section1' className='h-screen'>
-                <HeroBgGradient className='absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10' />
+              <section id="section1" className="h-screen">
+                <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div
-                  className='relative bg-no-repeat bg-contain'
+                  className="relative bg-no-repeat bg-contain"
                   style={{
                     backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.8) 50%, rgba(0,0,0,0.0) 70%),url('${imageToBase64(
                       `${assetsDir}/image/3.png`
-                    )}')`
+                    )}')`,
                   }}
                 >
-                  <div className='ml-10 mr-10 pt-5 h-100vw max-w-3xl mx-auto space-y-4 text-left flex-col justify-center '>
+                  <div className="ml-10 mr-10 pt-5 h-100vw max-w-3xl mx-auto space-y-4 text-left flex-col justify-center ">
                     <img
                       src={`${imageToBase64(
                         `${currentDir}/assets/threeBodyLogo.png`
                       )}`}
                       width={300}
                     />
-                    <div className='mt-10 pt-10'>
-                      <h1 className='text-3xl text-linear'>
+                    <div className="mt-10 pt-10">
+                      <h1 className="text-3xl text-linear">
                         探索三体宇宙：英文版精读与并行翻译之旅
                       </h1>
-                      <div className='pt-5 text-1xl text-zinc-600'>
+                      <div className="pt-5 text-1xl text-zinc-600">
                         不沉浸于英文原版《三体》，怎能触及ETO智识的门槛？
                       </div>
-                      <h1 className='text-3xl text-linear pt-5'>
+                      <h1 className="text-3xl text-linear pt-5">
                         词汇星光图：核心术语标注与深度解读
                       </h1>
-                      <div className='pt-5 text-1xl text-zinc-600'>
+                      <div className="pt-5 text-1xl text-zinc-600">
                         在知识的真空里，即便是学习路上的慢行者，每日微小的进步也能累积至光速的十分之一。
                       </div>
-                      <h1 className='text-3xl text-linear pt-5'>
+                      <h1 className="text-3xl text-linear pt-5">
                         文字的宇宙奇点：大刘笔下艺术探秘与三体现象文化解码
                       </h1>
-                      <div className='pt-5 text-1xl text-zinc-600'>
+                      <div className="pt-5 text-1xl text-zinc-600">
                         深入刘慈欣的文字宇宙，揭秘那些塑造了朋友圈热议话题的艺术手法，同时追踪那些在三体社群中流传的热门梗与幕后故事。
                       </div>
-                      <h1 className='text-3xl text-linear pt-5'>
+                      <h1 className="text-3xl text-linear pt-5">
                         双语桥梁：《三体》英汉版本比较与跨文化之旅
                       </h1>
-                      <div className='pt-5 text-1xl text-zinc-600'>
+                      <div className="pt-5 text-1xl text-zinc-600">
                         跨越语言的星际之门，通过《三体》英汉版本的细致比对，掌握进阶翻译秘籍，洞察中美文化差异，仿佛亲身经历云天明在三体世界的卧底时光，每一次字句转换都是对两个世界理解的深化。
                       </div>
                     </div>
@@ -126,58 +123,76 @@ export default async props => {
                   })}
                 </div> */}
               </section>
-            )
+            );
           })()}
 
-        {section === '2' &&
+        {section === "2" &&
           ((order = 0) => {
             return (
-              <section id='section2' className='max-w-screen'>
-                <HeroBgGradient className='absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10' />
+              <section id="section2" className="max-w-screen">
+                <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div
-                  className='relative bg-no-repeat pt-5'
+                  className="relative bg-no-repeat pt-5"
                   style={{
                     backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.8) 50%, rgba(0,0,0,0.8) 70%),url('${imageToBase64(
                       `${assetsDir}/image/2.png`
-                    )}')`
+                    )}')`,
                   }}
                 >
-                  <div className='text-2xl h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl'>
+                  <div className="text-2xl h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
                     <img
                       src={`${imageToBase64(
                         `${currentDir}/assets/threeBodyLogo.png`
                       )}`}
                       width={200}
                     />
-                    <div className='flex flex-col items-center mt-20 pt-20'>
-                      <h1 className='text-linear pt-5'>Part 1</h1>
-                      <h1 className='text-linear pt-5'>The Madness Years</h1>
-                      <h1 className='text-linear pt-5'>第一章： 疯狂年代</h1>
-                      <h1 className='text-linear pt-5 text-2xl'>中国，1967年</h1>
+                    <div className="flex flex-col items-center mt-20 pt-20">
+                      <h1 className="text-linear pt-5">Part 1</h1>
+                      <h1 className="text-linear pt-5">The Madness Years</h1>
+                      <h1 className="text-linear pt-5">第一章： 疯狂年代</h1>
+                      <h1 className="text-linear pt-5 text-2xl">
+                        中国，1967年
+                      </h1>
                     </div>
                   </div>
                 </div>
               </section>
-            )
+            );
           })(order)}
-        {/* {section === "3" && (
-          <section id="section3" className=" max-w-screen mt-4">
-            <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
-            <div className="m-10">
-              <div className="flex mt-20 justify-center text-sm font-medium">
-                <Link
-                  href="/components"
-                  className="text-2xl flex items-center gap-1 py-3 px-4 rounded-md text-center text-white border-none bg-zinc-800 shadow-md w-auto hover:bg-zinc-700 duration-150 sm:py-2.5"
+        {section === "3" &&
+          (() => {
+            return (
+              <section id="section3" className="h-screen">
+                <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
+                <div
+                  className="relative bg-no-repeat bg-contain"
+                  style={{
+                    backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.8) 50%, rgba(0,0,0,0.8) 70%),url('${imageToBase64(
+                      `${assetsDir}/image/4.png`
+                    )}')`,
+                  }}
                 >
-                  听力练习巩固
-                </Link>
-              </div>
-              <div className="text-2xl flex flex-col mt-5 font-medium">
-                <MultiHtmlText text={mix} tense={tense} />
-              </div>
-            </div>
-          </section>
-        )} */}
+                  <div className="text-2xl h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
+                    <div className="flex flex-col items-center pt-40">
+                      <h1 className="text-linear pt-5">
+                        {" "}
+                        <img
+                          src={`${imageToBase64(
+                            `${currentDir}/assets/threeBodyLogo.png`
+                          )}`}
+                          width={300}
+                        />
+                      </h1>
+                      <h1 className="text-linear pt-20">第一章： 疯狂年代</h1>
+                      <p className="text-linear pt-10 text-2xl tracking-widest">
+                        我是一位喜欢三体的学渣，背个单词，交个朋友!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            );
+          })()}
         {/* {section === "4" && (
           <section id="section4" className="max-w-screen mt-4">
             <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
@@ -380,8 +395,8 @@ export default async props => {
             );
           })(order)} */}
       </div>
-    )
+    );
   } catch (err) {
-    return <></>
+    return <></>;
   }
-}
+};
