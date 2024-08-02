@@ -3,7 +3,6 @@ import Link from "next/link";
 import HeroBgGradient from "components/HeroBgGradient";
 import BgGradient from "components/ui/BgGradient";
 import fse from "fse";
-import Navbar from "components/ui/Navbar";
 import {
   imageToBase64,
   HtmlTextRoot,
@@ -30,7 +29,7 @@ export default async (props) => {
     fse.readFileSync(`${projectDir}/config.json`, "utf8")
   );
   const { mix, important, english, chinese, translation } = project;
-  const words = Array.from({ length: 6 }).map((item, index) => {
+  const words = Array.from({ length: 12 }).map((item, index) => {
     const { word } = important[`word${index + 1}`];
     return word;
   });
@@ -41,18 +40,33 @@ export default async (props) => {
         <BgGradient />
         {section === "1" &&
           (() => {
+            const posts = Array.from({ length: 3 }).map((item, index) => {
+              const { word, phoneticSymbol, parse, explain } =
+                important[`word${index + 1}`];
+              return {
+                word,
+                phoneticSymbol,
+                parse,
+                explain,
+                translation,
+                img: `${imageToBase64(
+                  `${projectDir}/image/word${index + 1}.png`
+                )}`,
+              };
+            });
+
             return (
               <section id="section1" className="h-screen">
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div
                   className="relative bg-no-repeat"
                   style={{
-                    backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.8) 50%, rgba(0,0,0,0.0) 70%),url('${imageToBase64(
-                      `${projectDir}/image/1.png`
+                    backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.8) 50%, rgba(0,0,0,0.8) 50%),url('${imageToBase64(
+                      `${projectDir}/image/word1.png`
                     )}')`,
                   }}
                 >
-                  <div className="ml-10 mr-10 pt-5 h-100vw max-w-3xl mx-auto space-y-4 text-left flex-col justify-center ">
+                  <div className="ml-10 mr-10 pt-5 h-100vw mx-auto space-y-4 text-left flex-col justify-center ">
                     <img
                       src={`${imageToBase64(
                         `${currentDir}/assets/threeBodyLogo.png`
@@ -60,36 +74,40 @@ export default async (props) => {
                       width={200}
                     />
                     <div className="mt-5 pt-2">
-                      {Array.from({ length: 6 }).map((item, index) => {
-                        const { word, phoneticSymbol, parse, explain } =
-                          important[`word${index + 1}`];
-                        return (
-                          <>
-                            <h1 className="mt-8 text-3xl text-linear">
-                              {word} <span className="text-2xl">{explain}</span>
-                            </h1>
-                            <div className="text-1xl text-zinc-500">
-                              <span className="text-lg">{phoneticSymbol}</span>{" "}
-                              {parse}
-                            </div>
-                          </>
-                        );
-                      })}
+                      <div className="mt-12 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                        {posts.map((items, key) => (
+                          <article
+                            className="max-w-md mx-auto mt-4 shadow-lg border border-gray-500 rounded-md duration-300 bg-black/30"
+                            key={key}
+                          >
+                            <a href={""}>
+                              <img
+                                src={items.img}
+                                loading="lazy"
+                                alt={items.word}
+                                className="w-full h-48 rounded-t-md"
+                              />
+                              <div className="flex items-center mt-2 pt-3 mr-2">
+                                <div className="ml-3 text-linear text-3xl">
+                                  <span className="block">{items.word}</span>
+                                  <span className="block text-xl">
+                                    {items.phoneticSymbol}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="pt-3 ml-4 mr-2 mb-3">
+                                <h3 className="text-xl">{items.explain}</h3>
+                                <p className="text-gray-400 text-sm mt-1">
+                                  {items.parse}
+                                </p>
+                              </div>
+                            </a>
+                          </article>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-                {/* <div className="max-w-3xl mx-auto space-y-4 text-center flex-col justify-center ">
-                  {commonRoot?.map(({ root, definition, source }, index) => {
-                    return (
-                      <span  key={index}>
-                        <h1 className="flex-shrink-0 w-full pt-20 text-6xl text-linear">
-                          {root} <span className="text-4xl">{definition}</span>
-                        </h1>
-                        <div className="text-2xl pt-10 text-zinc-400">词根： {source}</div>
-                      </span>
-                    );
-                  })}
-                </div> */}
               </section>
             );
           })()}
@@ -97,14 +115,14 @@ export default async (props) => {
         {section === "2" &&
           ((order = 0) => {
             const [en, zh] = mix[order];
-            const imgNumber = Math.floor((3 / mix.length) * order) + 1;
+            const imgNumber = Math.ceil((10 / mix.length) * order) || 1;
             return (
               <section
                 id="section2"
                 className="max-w-screen relative bg-no-repeat"
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${imageToBase64(
-                    `${projectDir}/image/${imgNumber}.png`
+                    `${projectDir}/image/keyframe${imgNumber}.png`
                   )}')`,
                 }}
               >
@@ -131,7 +149,7 @@ export default async (props) => {
           })(order)}
         {section === "3" &&
           ((order = 0) => {
-            const { phoneticSymbol, explain, word, parse, usage, image } =
+            const { phoneticSymbol, explain, word, translation, usage, image } =
               important[`word${order}`];
             return (
               <section
@@ -139,7 +157,7 @@ export default async (props) => {
                 className="max-w-screen relative bg-no-repeat"
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${imageToBase64(
-                    `${projectDir}/image/${image || 1}.png`
+                    `${projectDir}/image/word${image || 1}.png`
                   )}')`,
                 }}
               >
@@ -161,7 +179,7 @@ export default async (props) => {
                         <p className=" text-blue-500">
                           <HtmlText tense={[word]} text={usage} />
                         </p>
-                        <h3 className="mt-3 text-linear text-1xl">{parse}</h3>
+                        <h3 className="mt-3 text-linear text-1xl">{translation}</h3>
                       </div>
                     </div>
                   </div>
@@ -177,7 +195,7 @@ export default async (props) => {
                 className="max-w-screen relative bg-no-repeat"
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${imageToBase64(
-                    `${projectDir}/image/${image || 1}.png`
+                    `${projectDir}/image/diffence${order + 1 || 1}.png`
                   )}')`,
                 }}
               >
@@ -202,7 +220,7 @@ export default async (props) => {
               <section id="section5" className="max-w-screen">
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div className="h-screen w-full text-left grid items-center pl-20 pr-20">
-                  <div className="flex-none p-2 text-sm font-body">
+                  <div className="flex-none p-2 text-sm text-white/50 font-body">
                     <h3 className="text-lg leading-[4rem]">
                       <HtmlText
                         tense={words}
@@ -230,7 +248,7 @@ export default async (props) => {
                 className="max-w-screen relative bg-no-repeat"
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${imageToBase64(
-                    `${projectDir}/image/${order || 1}.png`
+                    `${projectDir}/image/prefect${order + 1 || 1}.png`
                   )}')`,
                 }}
               >

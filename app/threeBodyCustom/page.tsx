@@ -129,7 +129,7 @@ export default async (props) => {
         {section === "2" &&
           ((order = 0) => {
             return (
-              <section id="section2" className="max-w-screen">
+              <section id="section2">
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
                 <div
                   className="relative bg-no-repeat pt-5"
@@ -139,7 +139,7 @@ export default async (props) => {
                     )}')`,
                   }}
                 >
-                  <div className="text-2xl h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
+                  <div className="text-2xl pl-5 h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
                     <img
                       src={`${imageToBase64(
                         `${currentDir}/assets/threeBodyLogo.png`
@@ -164,30 +164,28 @@ export default async (props) => {
             return (
               <section id="section3" className="h-screen">
                 <HeroBgGradient className="absolute inset-x-0 mx-auto duration-500 top-0 -translate-x-32 sm:-translate-x-10" />
-                <div
-                  className="relative bg-no-repeat bg-contain"
-                  style={{
-                    backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.8) 50%, rgba(0,0,0,0.8) 70%),url('${imageToBase64(
-                      `${assetsDir}/image/4.png`
-                    )}')`,
-                  }}
-                >
-                  <div className="text-2xl h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
-                    <div className="flex flex-col items-center pt-40">
-                      <h1 className="text-linear pt-5">
-                        {" "}
-                        <img
-                          src={`${imageToBase64(
-                            `${currentDir}/assets/threeBodyLogo.png`
-                          )}`}
-                          width={300}
-                        />
-                      </h1>
-                      <h1 className="text-linear pt-20">第一章： 疯狂年代</h1>
-                      <p className="text-linear pt-10 text-2xl tracking-widest">
-                        我是一位喜欢三体的学渣，背个单词，交个朋友!
-                      </p>
+
+                <div className="text-2xl h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
+                  <div className="flex flex-col items-center pt-40">
+                    <h1 className="text-linear pt-5">
+                      {" "}
+                      <img
+                        src={`${imageToBase64(
+                          `${currentDir}/assets/threeBodyLogo.png`
+                        )}`}
+                        width={300}
+                      />
+                    </h1>
+                    <p>&nbsp;</p>
+                    <div className="indicator">
+                      <span className="indicator-item badge badge-warning">
+                        待续
+                      </span>
+                      <h1 className="text-linear">第一章： 疯狂年代 </h1>
                     </div>
+                    <p className="text-linear pt-10 text-2xl tracking-widest">
+                      兴趣是最好的老师，我是一位喜欢三体的学渣，背个单词，交个朋友!
+                    </p>
                   </div>
                 </div>
               </section>
