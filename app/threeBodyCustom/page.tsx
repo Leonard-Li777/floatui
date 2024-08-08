@@ -147,11 +147,11 @@ export default async (props) => {
                       width={200}
                     />
                     <div className="flex flex-col items-center mt-20 pt-20">
-                      <h1 className="text-linear pt-5">Part 1</h1>
-                      <h1 className="text-linear pt-5">The Madness Years</h1>
-                      <h1 className="text-linear pt-5">第一章： 疯狂年代</h1>
+                      <h1 className="text-linear pt-5">The Dark Forest：Prologue</h1>
+                      {/* <h1 className="text-linear pt-5">The Madness Years</h1> */}
+                      <h1 className="text-linear pt-5">三体II黑暗森林：序章</h1>
                       <h1 className="text-linear pt-5 text-2xl">
-                        中国，1967年
+                      原著：刘慈欣
                       </h1>
                     </div>
                   </div>
@@ -181,7 +181,7 @@ export default async (props) => {
                       <span className="indicator-item badge badge-warning">
                         待续
                       </span>
-                      <h1 className="text-linear">第一章： 疯狂年代 </h1>
+                      <h1 className="text-linear">三体II黑暗森林：序章 </h1>
                     </div>
                     <p className="text-linear pt-10 text-2xl tracking-widest">
                       兴趣是最好的老师，我是一位喜欢三体的学渣，背个单词，交个朋友!

@@ -98,46 +98,51 @@ export function HtmlText({
   cls,
   tense,
   important,
-  mask,
+  tag,
 }: {
   text: string;
   cls?: string;
   tense?: Array<string>;
   important?: Record<string, any>;
-  mask?: boolean;
+  tag?: boolean;
 }) {
   let html = "";
-  if (mask) {
-    html = text.replace(
-      /\(([^\)]*)\)/g,
-      ` <b class='${"underline-offset-8 underline decoration-blue-500"}' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> `
-    );
-  } else {
-    html = text.replace(
-      /\(([^\)]*)\)/g,
-      ` <div className="tooltip tooltip-open" data-tip="hello">
+
+  html = text.replace(
+    /\(([^\)]*)\)/g,
+    ` <div className="tooltip tooltip-open" data-tip="hello">
         <b class='${
           !tense?.length
             ? "underline-offset-8 underline decoration-blue-500"
             : "text-blue-500"
         }' >$1</b> 
       </div>`
-    );
-  }
+  );
 
-  if (!mask && tense?.length) {
+  if (tense?.length) {
     tense
       .sort((a, b) => -(a.length - b.length))
       .forEach((item) => {
-        const { phoneticSymbol = '', explain = '', word = '', parse = '' } =
-          Object.values(important ?? {}).find(({ word }) => item === word) ??
-          {};
+        const {
+          phoneticSymbol = "",
+          explain = "",
+          word = "",
+          parse = "",
+        } = Object.values(important ?? {}).find(({ word }) => item === word) ??
+        {};
         html = html.replace(
           `${item}`,
           word
             ? `<div class="indicator ">
-                <div class="indicator-item indicator-center badge text-white/80 badge-outline border-black/50 mb-4 text-md bg-black/50">
-                    <p>${phoneticSymbol} ${explain}</p>
+                <div class="indicator-item indicator-center badge ${
+                  tag
+                    ? "text-black/80 bg-white/80 border-none p-3"
+                    : "text-white/25 border-white/5"
+                }  badge-outline  mb-4 text-md">
+                    <p>${tag ? phoneticSymbol : ""}${explain.replace(
+                /[\w\.\s]*/gi,
+                ""
+              )}</p>
                 </div>
                 <b class='text-blue-500'>${item}</b>
               </div>`
