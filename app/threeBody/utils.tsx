@@ -99,12 +99,14 @@ export function HtmlText({
   tense,
   important,
   tag,
+  isDoubleRow,
 }: {
   text: string;
   cls?: string;
   tense?: Array<string>;
   important?: Record<string, any>;
   tag?: boolean;
+  isDoubleRow?: boolean;
 }) {
   let html = "";
 
@@ -136,9 +138,11 @@ export function HtmlText({
             ? `<div class="indicator ">
                 <div class="indicator-item indicator-center badge ${
                   tag
-                    ? "text-black/80 bg-white/80 border-none p-3"
-                    : "text-white/25 border-white/5"
-                }  badge-outline  mb-4 text-md">
+                    ? `text-black/80 bg-white/80 border-none p-2 ${
+                        isDoubleRow ? "" : "-top-3"
+                      } text-sm`
+                    : "text-white/30 border-white/0"
+                }  badge-outline mb-4 text-lg">
                     <p>${tag ? phoneticSymbol : ""}${explain.replace(
                 /[\w\.\s]*/gi,
                 ""

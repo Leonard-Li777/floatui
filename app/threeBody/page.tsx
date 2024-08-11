@@ -78,22 +78,19 @@ export default async (props) => {
                   }}
                 >
                   <div className="text-2xl pl-5 h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
-                    <img
-                      src={`${imageToBase64(
-                        `${currentDir}/assets/threeBodyLogo.png`
-                      )}`}
-                      width={200}
-                    />
-                    <div className="flex flex-col items-center mt-20 pt-20">
-                      <h1 className="text-linear pt-5">
-                        The Dark Forest：Prologue
-                      </h1>
+                    <div className="flex flex-col items-center mt-10 pt-20">
+                      <img
+                        src={`${imageToBase64(
+                          `${currentDir}/assets/threeBodyLogo.png`
+                        )}`}
+                        width={400}
+                      />
                       {/* <h1 className="text-linear pt-5">The Madness Years</h1> */}
-                      <h1 className="text-linear pt-5">三体II黑暗森林：序章</h1>
+                      <h1 className="text-8xl pt-5">三体II黑暗森林：序章</h1>
                       <h1 className="text-linear pt-5 text-2xl">
-                        原著：刘慈欣
+                      The Dark Forest：Prologue 原著：刘慈欣
                       </h1>
-                      <button className="font-extrabold  mt-10 px-7 py-4 w-40 text-white duration-150 bg-indigo-600 rounded-full hover:bg-indigo-500 active:bg-indigo-700">
+                      <button className="text-8xl font-extrabold  mt-10 px-7 py-4  text-white duration-150 bg-indigo-600 rounded-full hover:bg-indigo-500 active:bg-indigo-700">
                         &nbsp;{storySection}&nbsp;
                       </button>
                     </div>
@@ -126,7 +123,8 @@ export default async (props) => {
                   className="relative bg-no-repeat"
                   style={{
                     backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.8) 50%, rgba(0,0,0,0.8) 50%),url('${
-                      word1 || imageToBase64(`${projectDir}/image/keyframe2.png`)
+                      word1 ||
+                      imageToBase64(`${projectDir}/image/keyframe2.png`)
                     }')`,
                   }}
                 >
@@ -178,10 +176,11 @@ export default async (props) => {
           ((order = 0) => {
             const [en, zh] = mix[order];
             const imgNumber = Math.ceil((10 / mix.length) * order) || 1;
+            const isDoubleRow = en.length > 82;
             return (
               <section
                 id="section2"
-                className="max-w-screen relative bg-no-repeat"
+                className="relative bg-no-repeat"
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${
                     project[`keyframe${imgNumber}`] ||
@@ -194,16 +193,21 @@ export default async (props) => {
                 <div className="h-screen w-full space-y-4 text-left relative">
                   <div className="w-full absolute bottom-3">
                     <div className="pr-10 pl-10 ">
-                      <div className="text-linear leading-loose tracking-wide text-2xl">
+                      <div
+                        className={`text-linear ${
+                          isDoubleRow ? "leading-loose" : ""
+                        } tracking-wide text-3xl`}
+                      >
                         <HtmlText
                           tense={words}
                           important={important}
                           text={en}
                           tag
+                          isDoubleRow={isDoubleRow}
                         />
                       </div>
-                      <div className=" text-gray-400 leading-loose tracking-widest text-1xl font-body">
-                        <HtmlText tense={words} text={zh} />
+                      <div className=" text-gray-400 tracking-widest text-xl font-body">
+                        {zh}
                       </div>
                     </div>
                   </div>
@@ -218,7 +222,7 @@ export default async (props) => {
             return (
               <section
                 id="section3"
-                className="max-w-screen relative bg-no-repeat"
+                className="relative bg-no-repeat"
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${
                     project[`word${order + 1}`] ||
@@ -227,7 +231,7 @@ export default async (props) => {
                 }}
               >
                 <div className="h-screen w-full text-left relative">
-                  <div className="w-full absolute bottom-10 bg-black/50 border-spacing-3 rounded-xl">
+                  <div className="w-full absolute bottom-0 bg-black/50 border-spacing-3 rounded-xl">
                     <div className="p-3 max-w-screen-xl mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between flex md:px-8">
                       <ul className="min-w-60">
                         <li className="">
@@ -256,7 +260,7 @@ export default async (props) => {
             return (
               <section
                 id="section4"
-                className="max-w-screen relative bg-no-repeat"
+                className="relative bg-no-repeat"
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.0) 10%, rgba(0,0,0,0.0) 30%),url('${
                     project[`difference${order + 1}`] ||
@@ -297,9 +301,9 @@ export default async (props) => {
           ((order = 0) => {
             return (
               <section id="section5" className="max-w-screen">
-                <div className="h-screen w-full text-left grid items-center pl-20 pr-20">
+                <div className="h-screen w-full text-left grid items-center pl-5 pr-5">
                   <div className="flex-none p-2 text-sm text-white/60 font-body">
-                    <h3 className="text-lg leading-[4rem]">
+                    <h3 className="text-2xl leading-[4rem]">
                       <HtmlText
                         tense={words}
                         important={important}
@@ -316,7 +320,7 @@ export default async (props) => {
             return (
               <section
                 id="section3"
-                className="max-w-screen relative bg-no-repeat"
+                className="relative bg-no-repeat"
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0) 10%, rgba(0,0,0,0) 30%),url('${
                     project[`prefect${order + 1}`] ||
