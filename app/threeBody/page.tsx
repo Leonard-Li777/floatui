@@ -72,13 +72,13 @@ export default async (props) => {
                 <div
                   className="relative bg-no-repeat pt-5"
                   style={{
-                    backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.7) 50%, rgba(0,0,0,0.7) 50%),url('${imageToBase64(
+                    backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.0) 50%, rgba(0,0,0,0.0) 50%),url('${imageToBase64(
                       `${projectDir}/image/keyframe1.png`
                     )}')`,
                   }}
                 >
-                  <div className="text-2xl pl-5 h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl">
-                    <div className="flex flex-col items-center mt-10 pt-20">
+                  <div className="mix-blend-luminosity bg-blend-darken text-2xl pl-5 h-100vw text-gray-200 leading-loose font-body tracking-wide md:text-4xl drop-shadow-[0_10px_15px_rgba(0,0,0,1)]">
+                    <div className="flex flex-col items-center mt-10 pt-20 drop-shadow-lg">
                       <img
                         src={`${imageToBase64(
                           `${currentDir}/assets/threeBodyLogo.png`
@@ -86,11 +86,11 @@ export default async (props) => {
                         width={400}
                       />
                       {/* <h1 className="text-linear pt-5">The Madness Years</h1> */}
-                      <h1 className="text-8xl pt-5">三体II黑暗森林：序章</h1>
-                      <h1 className="text-linear pt-5 text-2xl">
+                      <h1 className="text-8xl font-extrabold pt-5 invert drop-shadow-[0_0px_10px_rgba(255,255,255,1)]">三体II黑暗森林：序章</h1>
+                      <h1 className="drop-shadow-xl pt-5 text-2xl">
                       The Dark Forest：Prologue 原著：刘慈欣
                       </h1>
-                      <button className="text-8xl font-extrabold  mt-10 px-7 py-4  text-white duration-150 bg-indigo-600 rounded-full hover:bg-indigo-500 active:bg-indigo-700">
+                      <button className="drop-shadow-lg text-8xl font-extrabold  mt-10 px-7 py-4  text-white duration-150 bg-indigo-600 rounded-full hover:bg-indigo-500 active:bg-indigo-700">
                         &nbsp;{storySection}&nbsp;
                       </button>
                     </div>
@@ -174,7 +174,7 @@ export default async (props) => {
 
         {section === "2" &&
           ((order = 0) => {
-            const [en, zh] = mix[order];
+            const {keyframe, en, zh} = mix[order];
             const imgNumber = Math.ceil((10 / mix.length) * order) || 1;
             const isDoubleRow = en.length > 82;
             return (
@@ -185,7 +185,7 @@ export default async (props) => {
                   backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${
                     project[`keyframe${imgNumber}`] ||
                     imageToBase64(
-                      `${projectDir}/image/keyframe${imgNumber}.png`
+                      `${projectDir}/image/${keyframe}.png`
                     )
                   }')`,
                 }}
