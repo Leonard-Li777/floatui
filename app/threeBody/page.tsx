@@ -86,9 +86,11 @@ export default async (props) => {
                         width={400}
                       />
                       {/* <h1 className="text-linear pt-5">The Madness Years</h1> */}
-                      <h1 className="text-8xl font-extrabold pt-5 invert drop-shadow-[0_0px_10px_rgba(255,255,255,1)]">三体II黑暗森林：序章</h1>
+                      <h1 className="text-8xl font-extrabold pt-5 invert drop-shadow-[0_0px_10px_rgba(255,255,255,1)]">
+                        三体II黑暗森林：序章
+                      </h1>
                       <h1 className="drop-shadow-xl pt-5 text-2xl">
-                      The Dark Forest：Prologue 原著：刘慈欣
+                        The Dark Forest：Prologue 原著：刘慈欣
                       </h1>
                       <button className="drop-shadow-lg text-8xl font-extrabold  mt-10 px-7 py-4  text-white duration-150 bg-indigo-600 rounded-full hover:bg-indigo-500 active:bg-indigo-700">
                         &nbsp;{storySection}&nbsp;
@@ -159,7 +161,6 @@ export default async (props) => {
                               </div>
                               <div className="text-gray-400 pt-3 ml-4 mr-2 mb-3">
                                 <h3 className="text-xl">{items.explain}</h3>
-                                <p className="text-sm mt-1">{items.parse}</p>
                               </div>
                             </a>
                           </article>
@@ -174,7 +175,7 @@ export default async (props) => {
 
         {section === "2" &&
           ((order = 0) => {
-            const {keyframe, en, zh} = mix[order];
+            const { keyframe, en, zh } = mix[order];
             const imgNumber = Math.ceil((10 / mix.length) * order) || 1;
             const isDoubleRow = en.length > 82;
             return (
@@ -184,9 +185,7 @@ export default async (props) => {
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0,0,0, 0.8) 10%, rgba(0,0,0,0.0) 30%),url('${
                     project[`keyframe${imgNumber}`] ||
-                    imageToBase64(
-                      `${projectDir}/image/${keyframe}.png`
-                    )
+                    imageToBase64(`${projectDir}/image/${keyframe}.png`)
                   }')`,
                 }}
               >
@@ -217,7 +216,7 @@ export default async (props) => {
           })(order)}
         {section === "3" &&
           ((order = 0) => {
-            const { phoneticSymbol, explain, word, translation, usage, image } =
+            const { phoneticSymbol, explain, word, translation, usage, parse } =
               important[`word${order + 1}`];
             return (
               <section
@@ -235,9 +234,14 @@ export default async (props) => {
                     <div className="p-3 max-w-screen-xl mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between flex md:px-8">
                       <ul className="min-w-60">
                         <li className="">
-                          <h4 className="text-4xl  text-blue-500">{word}</h4>
-                          <p className="text-2xl text-linear mt-3 font-medium">
-                            {phoneticSymbol} {explain}{" "}
+                          <h4 className="text-4xl  text-blue-500">
+                            {word}{" "}
+                            <span className="text-xl text-cyan-50">
+                              {phoneticSymbol} {explain}
+                            </span>{" "}
+                          </h4>
+                          <p className="text-2xl text-linear mt-3">
+                            {parse}
                           </p>
                         </li>
                       </ul>
