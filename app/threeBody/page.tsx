@@ -35,6 +35,7 @@ export default async (props) => {
     english,
     chinese,
     translation,
+    cover,
     difference1,
     difference2,
     difference3,
@@ -73,7 +74,7 @@ export default async (props) => {
                   className="relative bg-no-repeat pt-5"
                   style={{
                     backgroundImage: `linear-gradient(90deg, rgba(0,0,0, 0.0) 50%, rgba(0,0,0,0.0) 50%),url('${imageToBase64(
-                      `${projectDir}/image/keyframe1.png`
+                      `${projectDir}/image/${cover || "difference1"}.png`
                     )}')`,
                   }}
                 >
@@ -87,10 +88,10 @@ export default async (props) => {
                       />
                       {/* <h1 className="text-linear pt-5">The Madness Years</h1> */}
                       <h1 className="text-8xl font-extrabold pt-5 invert drop-shadow-[0_0px_10px_rgba(255,255,255,1)]">
-                        三体II黑暗森林：序章
+                        三体II黑暗森林：第一章
                       </h1>
                       <h1 className="drop-shadow-xl pt-5 text-2xl">
-                        The Dark Forest：Prologue 原著：刘慈欣
+                        The Dark Forest Part 1: THE WALLFACERS 原著：刘慈欣
                       </h1>
                       <button className="drop-shadow-lg text-8xl font-extrabold  mt-10 px-7 py-4  text-white duration-150 bg-indigo-600 rounded-full hover:bg-indigo-500 active:bg-indigo-700">
                         &nbsp;{storySection}&nbsp;
@@ -240,9 +241,7 @@ export default async (props) => {
                               {phoneticSymbol} {explain}
                             </span>{" "}
                           </h4>
-                          <p className="text-2xl text-linear mt-3">
-                            {parse}
-                          </p>
+                          <p className="text-2xl text-linear mt-3">{parse}</p>
                         </li>
                       </ul>
                       <div className="mt-2 text-2xl">
