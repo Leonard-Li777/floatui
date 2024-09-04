@@ -36,7 +36,9 @@ export default (props) => {
     const image = item.replace(".png", "");
     if (selectedMix) {
       selectedMix.item.keyframe = image;
-      setMix([...mix]);
+      const next = [...mix];
+      project.mix = next;
+      setMix(next);
     } else {
       project.cover = image;
       setCover(image);
@@ -44,11 +46,15 @@ export default (props) => {
   };
   const handleCharacterChange = (item, name) => {
     item.character = name;
-    setMix([...mix]);
+    const next = [...mix];
+    project.mix = next;
+    setMix(next);
   };
   const handleSpeakerChange = (item, name) => {
     item.speaker = name;
-    setMix([...mix]);
+    const next = [...mix];
+    project.mix = next;
+    setMix(next);
   };
   const handleRemove = async (type, filename) => {
     try {

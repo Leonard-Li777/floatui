@@ -13,7 +13,6 @@ export function getRandomInt(n: number): number {
 }
 
 export function imageToBase64(imagePath) {
-  console.log(3333, imagePath)
   const imageBuffer = fse.readFileSync(imagePath);
   const base64Image = imageBuffer.toString("base64");
   return `data:image/jpeg;base64,${base64Image}`;

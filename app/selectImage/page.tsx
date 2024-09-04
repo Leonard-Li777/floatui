@@ -33,7 +33,6 @@ export default async (props) => {
   try {
     return (
       <div className="">
-        <BgGradient />
         {section === "0" &&
           ((order = 0) => {
             const images = fse.readdirSync(`${projectDir}/image/`);
