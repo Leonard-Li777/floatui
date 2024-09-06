@@ -111,7 +111,7 @@ export function HtmlText({
 
   html = text.replace(
     /\(([^\)]*)\)/g,
-    ` <div className="tooltip tooltip-open" data-tip="hello">
+    ` <div className="tooltip tooltip-open">
         <b class='${
           !tense?.length
             ? "underline-offset-8 underline decoration-blue-500"
@@ -140,9 +140,9 @@ export function HtmlText({
                     ? `text-black/80 bg-white/80 border-none p-2 ${
                         isDoubleRow ? "" : "-top-3"
                       } text-sm`
-                    : "text-white/30 border-white/0"
-                }  badge-outline mb-4 text-lg">
-                    <p>${tag ? phoneticSymbol : ""}${explain.replace(
+                    : "text-white/30 border-white/0 text-lg"
+                }  badge-outline mb-4">
+                    <p><span class="text-sm">${phoneticSymbol}</span> ${explain.replace(
                 /[\w\.\s]*/gi,
                 ""
               )}</p>

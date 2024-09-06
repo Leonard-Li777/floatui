@@ -191,8 +191,8 @@ export default async (props) => {
                 }}
               >
                 <div className="h-screen w-full space-y-4 text-left relative">
-                  <div className="w-full absolute bottom-3">
-                    <div className="pr-10 pl-10 ">
+                  <div className="w-full absolute bottom-10">
+                    <div className="pr-10 pl-10 text-center">
                       <div
                         className={`text-linear ${
                           isDoubleRow ? "leading-loose" : ""
@@ -206,7 +206,7 @@ export default async (props) => {
                           isDoubleRow={isDoubleRow}
                         />
                       </div>
-                      <div className=" text-gray-400 tracking-widest text-xl font-body">
+                      <div className=" text-gray-400 tracking-widest text-3xl font-body">
                         {zh}
                       </div>
                     </div>
@@ -306,7 +306,7 @@ export default async (props) => {
               <section id="section5" className="max-w-screen">
                 <div className="h-screen w-full text-left grid items-center pl-5 pr-5">
                   <div className="flex-none p-2 text-sm text-white/60 font-body">
-                    <h3 className="text-2xl leading-[4rem]">
+                    <h3 className="leading-[4rem] text-size-11">
                       <HtmlText
                         tense={words}
                         important={important}

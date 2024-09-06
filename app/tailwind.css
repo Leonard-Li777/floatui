@@ -28,17 +28,23 @@
 }
 
 .h-100vw {
-  height: 100vw
+  height: 100vw;
 }
 
 .text-shaodw {
   text-shadow: #27272a 0px 2px 4px;
 }
 
+.text-size-11 {
+  font-size: 1.1rem;
+}
+
+.mix-height {
+  height: calc(100vh - 200px);
+}
 .heading-linear {
   @apply text-transparent bg-clip-text bg-[linear-gradient(180deg,_#FFF_30%,_rgba(255,255,255,_1)_100.00%)];
 }
-
 
 .custom-screen {
   @apply max-w-screen-xl mx-auto px-4 md:px-8;
