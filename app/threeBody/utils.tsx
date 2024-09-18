@@ -134,7 +134,7 @@ export function HtmlText({
         html = html.replace(
           `${item}`,
           word
-            ? `<div class="indicator ">
+            ? `<div class="indicator">
                 <div class="indicator-item indicator-center badge ${
                   tag
                     ? `text-black/80 bg-white/80 border-none p-2 ${
@@ -185,3 +185,55 @@ export function MultiHtmlText({
     </>
   );
 }
+
+export function paginateText(text: string, charLimit: number): string[] {
+  // Step 1: Split the text into words
+  const words = text.split(/\s+/);  // Use regex to split on any whitespace
+
+  // Step 2: Initial pagination based on character limit per page
+  let pages: string[] = [];
+  let currentPage: string[] = [];
+  let currentPageLength = 0;
+
+  words.forEach(word => {
+    // If adding the next word exceeds the character limit, start a new page
+    if (currentPageLength + word.length + 1 > charLimit) {
+      pages.push(currentPage.join(' '));
+      currentPage = [];
+      currentPageLength = 0;
+    }
+    currentPage.push(word);
+    currentPageLength += word.length + 1; // +1 for the space or punctuation
+  });
+
+  // Push the last page if there are words remaining
+  if (currentPage.length > 0) {
+    pages.push(currentPage.join(' '));
+  }
+
+  // Step 3: Adjust pages to balance word count across pages
+  let totalWords = words.length;
+  let avgWordsPerPage = Math.ceil(totalWords / pages.length);
+
+  let balancedPages: string[] = [];
+  currentPage = [];
+  let currentPageWordCount = 0;
+
+  words.forEach(word => {
+    if (currentPageWordCount >= avgWordsPerPage) {
+      balancedPages.push(currentPage.join(' '));
+      currentPage = [];
+      currentPageWordCount = 0;
+    }
+    currentPage.push(word);
+    currentPageWordCount++;
+  });
+
+  // Push the last balanced page
+  if (currentPage.length > 0) {
+    balancedPages.push(currentPage.join(' '));
+  }
+
+  return balancedPages;
+}
+

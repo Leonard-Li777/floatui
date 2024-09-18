@@ -7,9 +7,9 @@ import {
   imageToBase64,
   HtmlTextRoot,
   HtmlText,
-  MultiHtmlText,
   __dirname,
   __filename,
+  paginateText,
 } from "./utils";
 
 const title = "Float UI - Float UI components demo";
@@ -88,7 +88,7 @@ export default async (props) => {
                       />
                       {/* <h1 className="text-linear pt-5">The Madness Years</h1> */}
                       <h1 className="text-8xl font-extrabold pt-5 invert drop-shadow-[0_0px_10px_rgba(255,255,255,1)]">
-                        三体II黑暗森林：第一章
+                        三体II黑暗森林
                       </h1>
                       <h1 className="drop-shadow-xl pt-5 text-2xl">
                         The Dark Forest Part 1: THE WALLFACERS 原著：刘慈欣
@@ -302,17 +302,25 @@ export default async (props) => {
           })(order)}
         {section === "6" &&
           ((order = 0) => {
+            const pages = paginateText(english, 1000);
+            const sentence = pages[order];
             return (
               <section id="section5" className="max-w-screen">
                 <div className="h-screen w-full text-left grid items-center pl-5 pr-5">
                   <div className="flex-none p-2 text-sm text-white/60 font-body">
-                    <h3 className="leading-[4rem] text-size-11">
+                    <h3 className="leading-[5rem] text-2xl">
                       <HtmlText
                         tense={words}
                         important={important}
-                        text={english}
+                        text={sentence}
                       />
                     </h3>
+                    <div className="text-1xl text-right">
+                      <button className="px-3 py-1.5 text-sm text-white duration-150 bg-indigo-600 rounded-full hover:bg-indigo-500 active:bg-indigo-700">
+                        {order + 1}
+                      </button>{" "}
+                      / {pages.length}
+                    </div>
                   </div>
                 </div>
               </section>

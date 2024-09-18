@@ -26,10 +26,7 @@ export default (props) => {
   const remanentImages = difference(images, mixImages);
 
   const doubleImages = uniq(
-    mixImages.filter(
-      (image, index, self) =>
-        self.indexOf(image) !== index && self.lastIndexOf(image) !== index
-    )
+    mixImages.filter((image, index, self) => self.indexOf(image) !== index)
   );
 
   const handleMixChange = (item, index) => {
@@ -284,6 +281,9 @@ export default (props) => {
                               <div className="avatar">
                                 <div className="h-20 w-40">
                                   <img
+                                    onClick={() => {
+                                      handleImageChange(image, index);
+                                    }}
                                     src={`http://100.76.63.39:3000/editly/file?projectName=${projectName}&dirName=${dirName}&type=image&filename=${item.keyframe}.png`}
                                   />
                                 </div>
